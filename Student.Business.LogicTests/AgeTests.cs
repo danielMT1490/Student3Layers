@@ -1,0 +1,22 @@
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Student.Business.Logic;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Student.Business.Logic.Tests
+{
+    [TestClass()]
+    public class AgeTests
+    {
+        [DataRow("14/11/1990","05/04/2018",27)]
+        [DataRow("09/04/1989", "05/04/2018", 28)]
+        [TestMethod]
+        public void AreAgeTest(string DateBorn,string DateRegistry ,int result)
+        {
+            Assert.AreEqual(result,Age.AreAge(Convert.ToDateTime(DateBorn),Convert.ToDateTime(DateRegistry)));
+        }
+    }
+}

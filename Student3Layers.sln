@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.Presentation.WinSite", "Student.Presentation.WinSite\Student.Presentation.WinSite.csproj", "{6D0358C2-6C8F-4771-ABB1-6BA5C4324F5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.Common.Logic", "Student.Common.Logic\Student.Common.Logic.csproj", "{4849EB1C-044F-4731-8725-1E5733D447BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.Business.Logic", "Student.Business.Logic\Student.Business.Logic.csproj", "{649379BA-996C-4375-8197-BF85859E7E6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.DataAccess.Dao", "Student.DataAccess.Dao\Student.DataAccess.Dao.csproj", "{0EC25AAA-A998-44B3-8614-2A0D7A6BDF6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.DataAccess.DaoTests", "Student.DataAccess.DaoTests\Student.DataAccess.DaoTests.csproj", "{7EDD7127-6E72-467C-94F3-B10008D9A95A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.Business.LogicTests", "Student.Business.LogicTests\Student.Business.LogicTests.csproj", "{04528C4F-C7A0-4538-8D67-2682F784D43D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D0358C2-6C8F-4771-ABB1-6BA5C4324F5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D0358C2-6C8F-4771-ABB1-6BA5C4324F5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D0358C2-6C8F-4771-ABB1-6BA5C4324F5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D0358C2-6C8F-4771-ABB1-6BA5C4324F5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4849EB1C-044F-4731-8725-1E5733D447BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4849EB1C-044F-4731-8725-1E5733D447BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4849EB1C-044F-4731-8725-1E5733D447BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4849EB1C-044F-4731-8725-1E5733D447BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{649379BA-996C-4375-8197-BF85859E7E6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{649379BA-996C-4375-8197-BF85859E7E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{649379BA-996C-4375-8197-BF85859E7E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{649379BA-996C-4375-8197-BF85859E7E6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EC25AAA-A998-44B3-8614-2A0D7A6BDF6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EC25AAA-A998-44B3-8614-2A0D7A6BDF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EC25AAA-A998-44B3-8614-2A0D7A6BDF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EC25AAA-A998-44B3-8614-2A0D7A6BDF6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EDD7127-6E72-467C-94F3-B10008D9A95A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EDD7127-6E72-467C-94F3-B10008D9A95A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EDD7127-6E72-467C-94F3-B10008D9A95A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EDD7127-6E72-467C-94F3-B10008D9A95A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04528C4F-C7A0-4538-8D67-2682F784D43D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04528C4F-C7A0-4538-8D67-2682F784D43D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04528C4F-C7A0-4538-8D67-2682F784D43D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04528C4F-C7A0-4538-8D67-2682F784D43D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8AAB4C5-F4FC-4095-A703-DFABFBB4A7C3}
+	EndGlobalSection
+EndGlobal
