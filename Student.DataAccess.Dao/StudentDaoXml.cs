@@ -161,5 +161,48 @@ namespace Student.DataAccess.Dao
                 if (fs != null) fs.Close();
             }
         }
+
+        public List<Alumno> GetAll()
+        {
+            XmlSerializer xSeriz = new XmlSerializer(typeof(List<Alumno>));
+            Log.Debug("El fichero Registro.xml existe");
+            FileStream fs = null;
+            try
+            {
+                fs = new FileStream(Path, FileMode.Open, FileAccess.Read);
+                using (StreamReader sr = new StreamReader(fs))
+                {
+                    try
+                    {
+                        Alumno student = new Alumno();
+                        String xml = sr.ReadToEnd();
+                        StringReader stringReader = new StringReader(xml);
+                        students = (List<Alumno>)xSeriz.Deserialize(stringReader);
+                        students.Add(student);
+                        Log.Debug("Cargamos la lista de los alumnos");
+                        return students;
+                    }
+                    catch (FileLoadException)
+                    {
+                        Log.Error("No se ha podido cargar la lista");
+                        throw;
+                    }
+                    finally
+                    {
+                        sr.Close();
+                        fs = null;
+                    }
+                }
+            }
+            catch(FileNotFoundException)
+            {
+                Log.Error("No se ha encontrado el archivo");
+                throw;
+            }
+            finally
+            {
+                if (fs != null) fs.Close();
+            }
+        }
     }
 }
