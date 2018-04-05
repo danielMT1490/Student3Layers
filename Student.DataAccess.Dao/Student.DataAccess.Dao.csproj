@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="IStudentDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingletonJson.cs" />
+    <Compile Include="SingletonXml.cs" />
     <Compile Include="StudentDaoJson.cs" />
     <Compile Include="StudentDaoTxt.cs" />
     <Compile Include="StudentDaoXml.cs" />

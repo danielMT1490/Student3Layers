@@ -30,13 +30,10 @@ namespace Student.Business.Logic
             }
             catch (ArgumentNullException e)
             {
-                Log.Error("Falta una instancia"+e);
+                Log.Error("Falta una instancia" + e);
                 throw;
             }
-            catch (FileNotFoundException)
-            {
-                throw;
-            }
+            catch (FileNotFoundException) { throw; }
             catch (FileLoadException)
             {
                 throw;
