@@ -129,7 +129,6 @@ namespace Student.DataAccess.Dao
                     }
                     catch (FileNotFoundException)
                     {
-                        return null;
                         throw;
                     }
                     finally
@@ -140,7 +139,6 @@ namespace Student.DataAccess.Dao
             }
             catch (FileLoadException)
             {
-                return null;
                 throw;
             }
             finally

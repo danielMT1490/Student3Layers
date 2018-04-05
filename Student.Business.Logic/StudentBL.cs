@@ -19,7 +19,7 @@ namespace Student.Business.Logic
         public Alumno Add(Alumno student,TypeFormat typeFormat)
         {
             student.DateRegistry = DateTime.Now;
-            Log.Debug("FEcha actual calculada");
+            Log.Debug("Fecha actual calculada");
             student.Edad = Age.AreAge(student.DateBorn,student.DateRegistry);
             IStudentDao = ChangeFormat(typeFormat);
             Log.Debug("Formato pasado la capa Dao");
