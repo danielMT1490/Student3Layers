@@ -162,6 +162,11 @@ namespace Student.DataAccess.Dao
             }
         }
 
+        public List<Alumno> Filtro(Campo campo, string value)
+        {
+            return students;
+        }
+
         public List<Alumno> GetAll()
         {
             XmlSerializer xSeriz = new XmlSerializer(typeof(List<Alumno>));
@@ -201,7 +206,7 @@ namespace Student.DataAccess.Dao
             }
             finally
             {
-                if (fs != null) fs.Close();
+                if(fs!=null)fs.Close();
             }
         }
     }

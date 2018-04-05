@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace Student.DataAccess.Dao
 {
-    public interface IStudentDao
+    public interface ISingleton
     {
-        Alumno Add(Alumno student);
-        Alumno Deserialize();
-        List<Alumno> GetAll();
+        List<Alumno> GetList();
         List<Alumno> Filtro(Campo campo, string value);
     }
 }

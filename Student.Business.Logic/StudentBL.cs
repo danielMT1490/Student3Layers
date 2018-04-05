@@ -16,6 +16,7 @@ namespace Student.Business.Logic
     public class StudentBL : IStudentBL
     {
         private IStudentDao IStudentDao { get; set; }
+        private ISingleton ISingleton { get; set; }
         public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public Alumno Add(Alumno student,TypeFormat typeFormat)
         {
@@ -44,7 +45,6 @@ namespace Student.Business.Logic
             }
 
         }
-
         public IStudentDao ChangeFormat(TypeFormat typeformat)
         {
             try
@@ -71,6 +71,66 @@ namespace Student.Business.Logic
                 throw;
             }
             
+        }
+        public List<Alumno> GetSelect(TypeFormat type, string value, Campo campo)
+        {
+            try
+            {
+                switch (type)
+                {
+                    case TypeFormat.Txt:
+                        Log.Debug("select hecho en Txt");
+                        IStudentDao = new StudentDaoTxt();
+                        return IStudentDao.Filtro(campo,value);
+                    case TypeFormat.Json:
+                        Log.Debug("select hecho en  Json");
+                        ISingleton = new SingletonJson();
+                        return ISingleton.Filtro(campo,value);
+                    case TypeFormat.Xml:
+                        Log.Debug("select hecho en  Xml");
+                        ISingleton = new SingletonXml();
+                        return ISingleton.Filtro(campo, value);
+                    default:
+                        IStudentDao = new StudentDaoTxt();
+                        return IStudentDao.Filtro(campo, value);
+
+                }
+            }
+            catch (FormatException e)
+            {
+                Log.Error("el Enum no es correcto " + e);
+                throw;
+            }
+        }
+        public List<Alumno> GetAll(TypeFormat typeFormat)
+        {
+            try
+            {
+                switch (typeFormat)
+                {
+                    case TypeFormat.Txt:
+                        Log.Debug("select hecho en Txt");
+                        IStudentDao = new StudentDaoTxt();
+                        return IStudentDao.GetAll();
+                    case TypeFormat.Json:
+                        Log.Debug("select hecho en  Json");
+                        ISingleton = new SingletonJson();
+                        return ISingleton.GetList();
+                    case TypeFormat.Xml:
+                        Log.Debug("select hecho en  Xml");
+                        ISingleton = new SingletonXml();
+                        return ISingleton.GetList();
+                    default:
+                        IStudentDao = new StudentDaoTxt();
+                        return IStudentDao.GetAll();
+
+                }
+            }
+            catch (FormatException e)
+            {
+                Log.Error("el Enum no es correcto " + e);
+                throw;
+            }
         }
     }
 }

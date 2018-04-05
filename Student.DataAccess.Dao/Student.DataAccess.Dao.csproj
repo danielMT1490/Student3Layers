@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISingleton.cs" />
     <Compile Include="IStudentDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingletonJson.cs" />

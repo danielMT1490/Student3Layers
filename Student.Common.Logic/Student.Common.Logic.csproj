@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileUtils\Campo.cs" />
     <Compile Include="FileUtils\FileUtils.cs" />
     <Compile Include="FileUtils\TypeFormat.cs" />
     <Compile Include="Models\Alumno.cs" />

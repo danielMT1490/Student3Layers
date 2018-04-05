@@ -13,7 +13,8 @@ namespace Student.Business.Logic
     public interface IStudentBL
     {
         Alumno Add(Alumno student,TypeFormat typeFormat);
-
         IStudentDao ChangeFormat(TypeFormat typeformat);
+        List<Alumno> GetSelect(TypeFormat type , string value,Campo campo);
+        List<Alumno> GetAll(TypeFormat typeFormat);
     }
 }
