@@ -157,7 +157,45 @@ namespace Student.DataAccess.Dao
                 if (fs != null) fs.Close();
             }
         }
-
         
+        public List<Alumno> GetAll()
+        {
+            Log.Debug("Cargamos la lista json");
+            FileStream fl = null;
+            try
+            {
+                fl = new FileStream(Path,FileMode.Open,FileAccess.Read);
+                using (StreamReader sr = new StreamReader(fl))
+                {
+                    try
+                    {
+                        string registro = sr.ReadToEnd();
+                        students = JsonConvert.DeserializeObject<List<Alumno>>(registro);
+                        Log.Debug("Cargamos la lista de los alumnos");
+                    }
+                    catch (FileLoadException)
+                    {
+                        Log.Error("No se ha podido leer el fichero");
+                        throw;
+                    }
+                    finally
+                    {
+                       sr.Close();
+                    }
+                
+                }
+                return students;
+            }
+            catch (FileNotFoundException)
+            {
+                Log.Error("No se puede acceder al archivo");
+                throw;
+            }
+            finally
+            {
+                if (fl != null) fl.Close();
+            }
+            
+        }
     }
 }

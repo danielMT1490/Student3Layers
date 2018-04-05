@@ -44,7 +44,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuRegistro = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuBuscar = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -171,8 +170,7 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuRegistro,
-            this.MenuBuscar});
+            this.MenuRegistro});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(50, 20);
             this.toolStripMenuItem1.Text = "Menu";
@@ -181,13 +179,8 @@
             // 
             this.MenuRegistro.Name = "MenuRegistro";
             this.MenuRegistro.Size = new System.Drawing.Size(180, 22);
-            this.MenuRegistro.Text = "Registro";
-            // 
-            // MenuBuscar
-            // 
-            this.MenuBuscar.Name = "MenuBuscar";
-            this.MenuBuscar.Size = new System.Drawing.Size(180, 22);
-            this.MenuBuscar.Text = "Buscar";
+            this.MenuRegistro.Text = "Lista";
+            this.MenuRegistro.Click += new System.EventHandler(this.MenuRegistro_Click);
             // 
             // AlumnosForm
             // 
@@ -236,6 +229,5 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem MenuRegistro;
-        private System.Windows.Forms.ToolStripMenuItem MenuBuscar;
     }
 }

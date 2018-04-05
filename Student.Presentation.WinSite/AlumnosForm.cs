@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
+using System.IO;
 
 namespace Student.Presentation.WinSite
 {
@@ -50,24 +51,105 @@ namespace Student.Presentation.WinSite
 
         private void BtnTxt_Click(object sender, EventArgs e)
         {
-            this.LoadAlumnoData();
-            Log.Debug("Seleccionado registro en Txt");
-            AlumnoBL.Add(alumno,TypeFormat.Txt);
+            try
+            {
+                this.LoadAlumnoData();
+                Log.Debug("Seleccionado registro en Txt");
+                AlumnoBL.Add(alumno, TypeFormat.Txt);
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Problema interno");
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Problema interno");
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("Fallo en el registro , archivo no encontrado");
+            }
+            catch (FileLoadException)
+            {
+                MessageBox.Show("Fallo en el registro , no se pudo cargar el archivo");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Los datos introducidos no tienen el formato correcto");
+            }
+
 
         }
 
         private void BtnJson_Click(object sender, EventArgs e)
         {
-            this.LoadAlumnoData();
-            Log.Debug("Seleccionado registro en Txt");
-            AlumnoBL.Add(alumno, TypeFormat.Json);
+            try
+            {
+                this.LoadAlumnoData();
+                Log.Debug("Seleccionado registro en Txt");
+                AlumnoBL.Add(alumno, TypeFormat.Json);
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Problema interno");
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Problema interno");
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("Fallo en el registro , archivo no encontrado");
+            }
+            catch (FileLoadException)
+            {
+                MessageBox.Show("Fallo en el registro , no se pudo cargar el archivo");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Los datos introducidos no tienen el formato correcto");
+            }
+
+
         }
 
         private void BtnXml_Click(object sender, EventArgs e)
         {
-            this.LoadAlumnoData();
-            Log.Debug("Seleccionado registro en Txt");
-            AlumnoBL.Add(alumno, TypeFormat.Xml);
+            try
+            {
+                this.LoadAlumnoData();
+                Log.Debug("Seleccionado registro en Txt");
+                AlumnoBL.Add(alumno, TypeFormat.Xml);
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Problema interno");
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Problema interno");
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("Fallo en el registro , archivo no encontrado");
+            }
+            catch (FileLoadException)
+            {
+                MessageBox.Show("Fallo en el registro , no se pudo cargar el archivo");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Los datos introducidos no tienen el formato correcto");
+            }
+
+        }
+
+        private void MenuRegistro_Click(object sender, EventArgs e)
+        {
+            AlumnosShowForm alumnosShowForm = new AlumnosShowForm();
+            alumnosShowForm.Owner=this;
+            alumnosShowForm.Show();
+            this.Hide();
         }
     }
 }
