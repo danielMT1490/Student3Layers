@@ -7,11 +7,13 @@ using Student.Common.Logic.Models;
 using System.IO;
 using Student.Common.Logic.FileUtils;
 using System.Xml.Serialization;
+using log4net;
 
 namespace Student.DataAccess.Dao
 {
     public class StudentDaoXml : IStudentDao
     {
+        public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly string Path = FileUtils.Path("xml");
         private List<Alumno> students = new List<Alumno>();
         public Alumno Add(Alumno student)
@@ -19,6 +21,7 @@ namespace Student.DataAccess.Dao
             XmlSerializer xSeriz = new XmlSerializer(typeof(List<Alumno>));
             if (FileUtils.FileExists(Path))
             {
+                Log.Debug("El fichero Registro.xml existe");
                 FileStream fs = null;
                 try
                 {
@@ -32,9 +35,12 @@ namespace Student.DataAccess.Dao
                             students = (List<Alumno>)xSeriz.Deserialize(stringReader);
                             student.ConvertDate();
                             students.Add(student);
+                            Log.Debug("Cargamos la lista de los alumnos");
+                           
                         }
                         catch (FileNotFoundException)
                         {
+                            Log.Error("No se ha podido cargar la lista");
                             throw;
                         }
                         finally
@@ -49,11 +55,11 @@ namespace Student.DataAccess.Dao
                         try
                         {
                             xSeriz.Serialize(sw,students);
-
+                            Log.Debug($"Objeto {student.ToString()} instertado");
                         }
                         catch (FileNotFoundException)
                         {
-                            return null;
+                            Log.Error("No se ha podido insertar el Alumno");
                             throw;
                         }
                         finally
@@ -64,7 +70,7 @@ namespace Student.DataAccess.Dao
                 }
                 catch (FileNotFoundException)
                 {
-                    return null;
+                    Log.Error("No se ha podido cargar el archivo Registro.xml");
                     throw;
                 }
                 finally
@@ -87,11 +93,11 @@ namespace Student.DataAccess.Dao
                             student.ConvertDate();
                             students.Add(student);
                             xSeriz.Serialize(sw,students);
-
+                            Log.Debug($"Objeto {student.ToString()} instertado");
                         }
                         catch (FileNotFoundException)
                         {
-                            return null;
+                            Log.Error("No se ha podido insertar el Alumno");
                             throw;
                         }
                         finally
@@ -102,7 +108,7 @@ namespace Student.DataAccess.Dao
                 }
                 catch (FileLoadException)
                 {
-                    return null;
+                    Log.Error("No se ha podido cargar el archivo Registro.xml");
                     throw;
                 }
                 finally
@@ -126,15 +132,17 @@ namespace Student.DataAccess.Dao
                 {
                     try
                     {
+                        Log.Debug("Cargando lista de insertados");
                         String xml = sr.ReadToEnd();
                         StringReader stringReader = new StringReader(xml);
                         students = (List<Alumno>)xSeriz.Deserialize(stringReader);
                         alumnoDS = students.Last();
+                        Log.Debug($"Objeto recuperado {alumnoDS.ToString()}");
                         return alumnoDS;
                     }
                     catch (FileNotFoundException)
                     {
-                        return null;
+                        Log.Debug("No se ha podido cargar la lista");
                         throw;
                     }
                     finally
@@ -145,7 +153,7 @@ namespace Student.DataAccess.Dao
             }
             catch (FileLoadException)
             {
-                return null;
+                Log.Error("No se ha podido cargar el archivo Registro.xml");
                 throw;
             }
             finally

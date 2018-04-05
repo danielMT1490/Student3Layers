@@ -18,28 +18,49 @@ namespace Student.Business.Logic
         public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public Alumno Add(Alumno student,TypeFormat typeFormat)
         {
-            student.DateRegistry = DateTime.Now;
-            Log.Debug("Fecha actual calculada");
-            student.Edad = Age.AreAge(student.DateBorn,student.DateRegistry);
-            IStudentDao = ChangeFormat(typeFormat);
-            Log.Debug("Formato pasado la capa Dao");
-            return IStudentDao.Add(student);
+            try
+            {
+                student.DateRegistry = DateTime.Now;
+                Log.Debug("Fecha actual calculada");
+                student.Edad = Age.AreAge(student.DateBorn, student.DateRegistry);
+                IStudentDao = ChangeFormat(typeFormat);
+                Log.Debug("Formato pasado la capa Dao");
+                return IStudentDao.Add(student);
+            }
+            catch (ArgumentNullException e)
+            {
+                Log.Error("Falta una instancia"+e);
+                throw;
+            }
+           
         }
 
         public IStudentDao ChangeFormat(TypeFormat typeformat)
         {
-            switch (typeformat)
+            try
             {
-                case TypeFormat.Txt:
-                    return new StudentDaoTxt();
-                case TypeFormat.Json:
-                    return new StudentDaoJson();
-                case TypeFormat.Xml:
-                    return new StudentDaoXml();
-                default:
-                    return new StudentDaoTxt();
+                switch (typeformat)
+                {
+                    case TypeFormat.Txt:
+                        Log.Debug("Formato cambiado a Txt");
+                        return new StudentDaoTxt();
+                    case TypeFormat.Json:
+                        Log.Debug("Formato cambiado a Json");
+                        return new StudentDaoJson();
+                    case TypeFormat.Xml:
+                        Log.Debug("Formato cambiado a Xml");
+                        return new StudentDaoXml();
+                    default:
+                        return new StudentDaoTxt();
 
+                }
             }
+            catch (FormatException e)
+            {
+                Log.Error("el Enum no es correcto "+e);
+                throw;
+            }
+            
         }
     }
 }

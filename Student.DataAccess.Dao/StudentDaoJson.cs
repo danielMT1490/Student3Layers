@@ -7,17 +7,20 @@ using Student.Common.Logic.Models;
 using System.IO;
 using Student.Common.Logic.FileUtils;
 using Newtonsoft.Json;
+using log4net;
 
 namespace Student.DataAccess.Dao
 {
     public class StudentDaoJson : IStudentDao
     {
+        public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly string Path = FileUtils.Path("json");
         private List<Alumno> students = new List<Alumno>();
         public Alumno Add(Alumno student)
         {
             if (FileUtils.FileExists(Path))
             {
+                Log.Debug("El fichero Registro.json existe");
                 FileStream fs = null;
                 try
                 {
@@ -28,10 +31,12 @@ namespace Student.DataAccess.Dao
                         {
                             string lista = sr.ReadToEnd();  
                             students = JsonConvert.DeserializeObject<List<Alumno>>(lista);
+                            Log.Debug("Cargamos la lista de los alumnos");
                         }
-                        catch (FileNotFoundException)
+                        catch (FileNotFoundException e)
                         {
-                            throw;
+                            Log.Error("No se a podidio leer el archivo"+e);
+                            throw ;
                         }
                         finally
                         {
@@ -48,11 +53,12 @@ namespace Student.DataAccess.Dao
                             students.Add(student);
                             string lista = JsonConvert.SerializeObject(students);
                             sw.WriteLine(lista);
+                            Log.Debug($"El alumno {student.ToString()} a sido insertado");
 
                         }
                         catch (FileNotFoundException)
                         {
-                            return null;
+                            Log.Error("No se ha podido añadir el alumno");
                             throw;
                         }
                         finally
@@ -63,7 +69,7 @@ namespace Student.DataAccess.Dao
                 }
                 catch (FileNotFoundException)
                 {
-                    return null;
+                    Log.Error("No se ha encontrado el archivo");
                     throw;
                 }
                 finally
@@ -79,16 +85,17 @@ namespace Student.DataAccess.Dao
                 try
                 {
                     fs = new FileStream(Path, FileMode.Create, FileAccess.Write);
+                    Log.Debug("El archivo Registro.json ha sido creado");
                     using (StreamWriter sw = new StreamWriter(fs))
                     {
                         try
                         {
                             sw.WriteLine($"[{student.ToJson()}]");
-
+                            Log.Debug($"Alumno {student.ToString()} añadido");
                         }
                         catch (FileNotFoundException)
                         {
-                            return null;
+                            Log.Error("No se ha podido escribir en el archivo");
                             throw;
                         }
                         finally
@@ -97,9 +104,9 @@ namespace Student.DataAccess.Dao
                         }
                     }
                 }
-                catch (FileLoadException)
+                catch (FileNotFoundException)
                 {
-                    return null;
+                    Log.Error("No se ha podido crear el archivo Registro.json");
                     throw;
                 }
                 finally
@@ -125,10 +132,13 @@ namespace Student.DataAccess.Dao
                         string lista = sr.ReadToEnd();
                         students = JsonConvert.DeserializeObject<List<Alumno>>(lista);
                         alumnoDS = students.Last();
+                        Log.Debug($"Alumno {alumnoDS.ToString()} devluelto");
                         return alumnoDS;
+                       
                     }
                     catch (FileNotFoundException)
                     {
+                        Log.Error("No se ha insertar el alumno");
                         throw;
                     }
                     finally
@@ -139,6 +149,7 @@ namespace Student.DataAccess.Dao
             }
             catch (FileLoadException)
             {
+                Log.Error("No se ha podidio crear el archivo");
                 throw;
             }
             finally

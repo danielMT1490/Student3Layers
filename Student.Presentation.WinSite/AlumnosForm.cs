@@ -31,12 +31,21 @@ namespace Student.Presentation.WinSite
         }
         private void LoadAlumnoData()
         {
-            alumno.Id = Convert.ToInt32(textId.Text);
-            alumno.Nombre = textNombre.Text;
-            alumno.Apellidos = textApellido.Text;
-            alumno.Dni = textDni.Text;
-            alumno.DateBorn = Convert.ToDateTime(dateBorn.Value);
-            Log.Debug($"Datos insertados {alumno.Id},{alumno.Nombre},{alumno.Apellidos},{alumno.Dni},{alumno.DateBorn}");
+            try
+            {
+                alumno.Id = Convert.ToInt32(textId.Text);
+                alumno.Nombre = textNombre.Text;
+                alumno.Apellidos = textApellido.Text;
+                alumno.Dni = textDni.Text;
+                alumno.DateBorn = Convert.ToDateTime(dateBorn.Value);
+                Log.Debug($"Datos insertados {alumno.Id},{alumno.Nombre},{alumno.Apellidos},{alumno.Dni},{alumno.DateBorn}");
+            }
+            catch (FormatException e)
+            {
+                Log.Error("El formato no es el adecuado "+e);
+                throw;
+            }
+           
         }
 
         private void BtnTxt_Click(object sender, EventArgs e)

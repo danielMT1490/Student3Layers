@@ -6,17 +6,20 @@ using System.Threading.Tasks;
 using Student.Common.Logic.FileUtils;
 using Student.Common.Logic.Models;
 using System.IO;
+using log4net;
 
 namespace Student.DataAccess.Dao
 {
     public class StudentDaoTxt : IStudentDao
     {
+        public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly string Path = FileUtils.Path("txt");
 
         public Alumno Add(Alumno student)
         {
             if (FileUtils.FileExists(Path))
             {
+                Log.Debug("El fichero Registro.txt existe");
                 FileStream fs = null;
                 try
                 {
@@ -26,11 +29,11 @@ namespace Student.DataAccess.Dao
                         try
                         {
                             sw.WriteLine(student.ToString());
-                           
+                            Log.Debug($"Alumno {student.ToString()} registrado ");
                         }
                         catch (FileNotFoundException)
                         {
-                            return null;
+                            Log.Error("No se ha podido insertar el alumno");
                             throw ;
                         }
                         finally
@@ -41,7 +44,7 @@ namespace Student.DataAccess.Dao
                 }
                 catch (FileLoadException)
                 {
-                    return null;
+                    Log.Error("No se ha podido cargar el archivo");
                     throw ;
                 }
                 finally
@@ -52,20 +55,22 @@ namespace Student.DataAccess.Dao
             }
             else
             {
+                Log.Debug("El archivo Registro.Txt no existe");
                 FileStream fs = null;
                 try
                 {
                     fs = new FileStream(Path, FileMode.Create, FileAccess.Write);
+                    Log.Debug("Archivo REgistro.txt creado.");
                     using (StreamWriter sw = new StreamWriter(fs))
                     {
                         try
                         {
                             sw.WriteLine(student.ToString());
-                           
+                            Log.Debug($"Alumno {student.ToString()} insertado");
                         }
                         catch (FileNotFoundException)
                         {
-                            return null;
+                            Log.Error("No se ha podido insertar el alumo");
                             throw;
                         }
                         finally
@@ -76,7 +81,7 @@ namespace Student.DataAccess.Dao
                 }
                 catch (FileLoadException)
                 {
-                    return null;
+                    Log.Error("No se ha podido crear el archivo ");
                     throw;
                 }
                 finally
@@ -98,6 +103,7 @@ namespace Student.DataAccess.Dao
                 {
                     try
                     {
+                        Log.Debug("Cargando lista de insertados");
                         string[] props = new string[8];
                         string linea = "";
                         while ((linea = sr.ReadLine()) != null)
@@ -105,10 +111,12 @@ namespace Student.DataAccess.Dao
                             props = linea.Split(',');
                         }
                         alumnoDS = new Alumno(Guid.Parse(props[0]), Convert.ToInt32(props[1]), props[2], props[3], props[4], Convert.ToInt32(props[5]), props[6], props[7]);
+                        Log.Debug($"Objeto recuperado {alumnoDS.ToString()}");
                         return alumnoDS;
                     }
                     catch (FileNotFoundException)
                     {
+                        Log.Debug("No se ha podido cargar la lista");
                         throw;
                     }
                     finally
@@ -119,7 +127,7 @@ namespace Student.DataAccess.Dao
             }
             catch (FileLoadException)
             {
-                return null;
+                Log.Error("No se ha podido cargar el archivo Registro.txt");
                 throw;
             }
             finally
