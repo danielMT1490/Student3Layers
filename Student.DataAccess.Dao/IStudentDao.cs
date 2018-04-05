@@ -11,5 +11,6 @@ namespace Student.DataAccess.Dao
     {
         Alumno Add(Alumno student);
         Alumno Deserialize();
+        List<Alumno> GetAll();
     }
 }

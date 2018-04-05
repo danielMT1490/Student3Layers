@@ -161,5 +161,10 @@ namespace Student.DataAccess.Dao
                 if (fs != null) fs.Close();
             }
         }
+
+        public List<Alumno> GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
