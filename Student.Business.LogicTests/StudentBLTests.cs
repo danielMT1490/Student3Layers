@@ -7,12 +7,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
 
 namespace Student.Business.Logic.Tests
 {
     [TestClass()]
     public class StudentBLTests
     {
+        public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly StudentBL studentBL = new StudentBL();
 
         [DataRow(TypeFormat.Txt)]
@@ -21,9 +23,11 @@ namespace Student.Business.Logic.Tests
         [TestMethod]
         public void BlAddTest( TypeFormat typeFormat)
         {
+            Log.Debug("Entramos en test de formato");
             Alumno student = new Alumno(Guid.NewGuid(), 1, "45687654h", "Daniel", "Madrigal", 28, "24/06/1990", "05/09/2017");
             var result =studentBL.Add(student,typeFormat);
             Assert.IsTrue(student.Equals(result));
+            Log.Debug("Se registra que el alumno con el formato especificado");
         }
 
     }
