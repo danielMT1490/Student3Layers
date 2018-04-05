@@ -9,6 +9,7 @@ using Student.Common.Logic.FileUtils;
 using Student.Common.Logic.Models;
 using Student.DataAccess.Dao;
 using log4net;
+using System.IO;
 
 namespace Student.Business.Logic
 {
@@ -32,7 +33,19 @@ namespace Student.Business.Logic
                 Log.Error("Falta una instancia"+e);
                 throw;
             }
-           
+            catch (FileNotFoundException)
+            {
+                throw;
+            }
+            catch (FileLoadException)
+            {
+                throw;
+            }
+            catch (FormatException)
+            {
+                throw;
+            }
+
         }
 
         public IStudentDao ChangeFormat(TypeFormat typeformat)
