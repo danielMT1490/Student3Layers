@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.DataGrid = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Btntxt = new System.Windows.Forms.Button();
+            this.BtnJso = new System.Windows.Forms.Button();
+            this.BtnXml = new System.Windows.Forms.Button();
             this.BtnFiltrar = new System.Windows.Forms.Button();
             this.textValue = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,32 +52,35 @@
             this.DataGrid.Size = new System.Drawing.Size(634, 220);
             this.DataGrid.TabIndex = 0;
             // 
-            // button1
+            // Btntxt
             // 
-            this.button1.Location = new System.Drawing.Point(82, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 39);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Txt";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Btntxt.Location = new System.Drawing.Point(82, 27);
+            this.Btntxt.Name = "Btntxt";
+            this.Btntxt.Size = new System.Drawing.Size(126, 39);
+            this.Btntxt.TabIndex = 1;
+            this.Btntxt.Text = "Txt";
+            this.Btntxt.UseVisualStyleBackColor = true;
+            this.Btntxt.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // BtnJso
             // 
-            this.button2.Location = new System.Drawing.Point(323, 27);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(126, 39);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Json";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnJso.Location = new System.Drawing.Point(323, 27);
+            this.BtnJso.Name = "BtnJso";
+            this.BtnJso.Size = new System.Drawing.Size(126, 39);
+            this.BtnJso.TabIndex = 2;
+            this.BtnJso.Text = "Json";
+            this.BtnJso.UseVisualStyleBackColor = true;
+            this.BtnJso.Click += new System.EventHandler(this.BtnJso_Click);
             // 
-            // button3
+            // BtnXml
             // 
-            this.button3.Location = new System.Drawing.Point(590, 27);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(126, 39);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Xml";
-            this.button3.UseVisualStyleBackColor = true;
+            this.BtnXml.Location = new System.Drawing.Point(590, 27);
+            this.BtnXml.Name = "BtnXml";
+            this.BtnXml.Size = new System.Drawing.Size(126, 39);
+            this.BtnXml.TabIndex = 3;
+            this.BtnXml.Text = "Xml";
+            this.BtnXml.UseVisualStyleBackColor = true;
+            this.BtnXml.Click += new System.EventHandler(this.BtnXml_Click);
             // 
             // BtnFiltrar
             // 
@@ -87,6 +90,7 @@
             this.BtnFiltrar.TabIndex = 4;
             this.BtnFiltrar.Text = "Filtrar";
             this.BtnFiltrar.UseVisualStyleBackColor = true;
+            this.BtnFiltrar.Click += new System.EventHandler(this.BtnFiltrar_Click);
             // 
             // textValue
             // 
@@ -164,9 +168,9 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textValue);
             this.Controls.Add(this.BtnFiltrar);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnXml);
+            this.Controls.Add(this.BtnJso);
+            this.Controls.Add(this.Btntxt);
             this.Controls.Add(this.DataGrid);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -183,9 +187,9 @@
         #endregion
 
         private System.Windows.Forms.DataGridView DataGrid;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Btntxt;
+        private System.Windows.Forms.Button BtnJso;
+        private System.Windows.Forms.Button BtnXml;
         private System.Windows.Forms.Button BtnFiltrar;
         private System.Windows.Forms.TextBox textValue;
         private System.Windows.Forms.Label label4;
