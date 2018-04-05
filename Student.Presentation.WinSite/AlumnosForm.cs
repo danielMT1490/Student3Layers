@@ -44,6 +44,7 @@ namespace Student.Presentation.WinSite
             catch (FormatException e)
             {
                 Log.Error("El formato no es el adecuado "+e);
+                MailSend.Send("El formato insertado no es el correcto");
                 throw;
             }
            
