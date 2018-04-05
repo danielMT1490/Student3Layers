@@ -1,29 +1,33 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Student.Common.Logic.FileUtils;
-using Student.Common.Logic.Models;
 using Student.DataAccess.Dao;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using Student.Common.Logic.Models;
+using log4net;
 
 namespace Student.DataAccess.Dao.Tests
 {
     [TestClass()]
     public class StudentDaoJsonTests
     {
+        public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly string Path = FileUtils.Path("json");
         private readonly StudentDaoJson studentDaoJson = new StudentDaoJson();
         [TestInitialize]
         public void Init()
         {
+            Log.Debug("Limpiamos de ficheros existentes");
             if (FileUtils.FileExists(Path)) File.Delete(Path);
         }
         [TestCleanup]
         public void End()
         {
+            Log.Debug("Elimina todos los ficheros");
             File.Delete(Path);
         }
         public static IEnumerable<object[]> StudentData()
@@ -35,7 +39,9 @@ namespace Student.DataAccess.Dao.Tests
         [DynamicData(nameof(StudentData), DynamicDataSourceType.Method)]
         public void JsonAddTest(Alumno student)
         {
+            Log.Debug(System.Reflection.MethodBase.GetCurrentMethod().Name + " Agrega alumno");
             var result = studentDaoJson.Add(student);
+            Log.Debug($"EL alumno devuelto {result.ToString()}");
             Assert.IsTrue(student.Equals(result));
         }
 
