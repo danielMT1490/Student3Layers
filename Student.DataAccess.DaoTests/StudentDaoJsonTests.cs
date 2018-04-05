@@ -33,7 +33,7 @@ namespace Student.DataAccess.Dao.Tests
         }
         [DataTestMethod]
         [DynamicData(nameof(StudentData), DynamicDataSourceType.Method)]
-        public void XmlAddTest(Alumno student)
+        public void JsonAddTest(Alumno student)
         {
             var result = studentDaoJson.Add(student);
             Assert.IsTrue(student.Equals(result));
