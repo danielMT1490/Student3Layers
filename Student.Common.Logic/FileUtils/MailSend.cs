@@ -18,7 +18,7 @@ namespace Student.Common.Logic.FileUtils
             SmtpClient SmtpServer = new SmtpClient();
             try
             {
-               //comentario
+               
                 SmtpServer.Credentials = new System.Net.NetworkCredential
                             ("mindundi1490@gmail.com", "Mindundi1490+");
                 SmtpServer.Port = 587;

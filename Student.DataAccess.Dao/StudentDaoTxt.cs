@@ -186,6 +186,7 @@ namespace Student.DataAccess.Dao
 
         public List<Alumno> Filtro(Campo campo, string value)
         {
+            students = this.GetAll();
             switch (campo)
             {
                 case Campo.Guid:

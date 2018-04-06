@@ -35,14 +35,14 @@ namespace Student.Presentation.WinSite
         {
             DataGrid.DataSource = IStudentBl.GetAll(TypeFormat.Txt);
             FormatUtil.ChangeFormat("Txt");
-            MessageBox.Show(FormatUtil.Format());
+            MessageBox.Show($"Archivo de registro seleccionado {FormatUtil.Format()}", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void BtnJso_Click(object sender, EventArgs e)
         {
             DataGrid.DataSource = IStudentBl.GetAll(TypeFormat.Json);
             FormatUtil.ChangeFormat("Json");
-            MessageBox.Show(FormatUtil.Format());
+            MessageBox.Show($"Archivo de registro seleccionado {FormatUtil.Format()}", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
@@ -50,7 +50,7 @@ namespace Student.Presentation.WinSite
         {
             DataGrid.DataSource = IStudentBl.GetAll(TypeFormat.Xml);
             FormatUtil.ChangeFormat("Xml");
-            MessageBox.Show(FormatUtil.Format());
+            MessageBox.Show($"Archivo de registro seleccionado {FormatUtil.Format()}","Registro",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void BtnFiltrar_Click(object sender, EventArgs e)
