@@ -7,12 +7,13 @@ using Student.Common.Logic.FileUtils;
 using Student.Common.Logic.Models;
 using System.IO;
 using log4net;
+using Student.Common.Logic.Log;
 
 namespace Student.DataAccess.Dao
 {
     public class StudentDaoTxt : IStudentDao
     {
-        public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly string Path = FileUtils.Path("txt");
         public List<Alumno> students = new List<Alumno>();
         public Alumno Add(Alumno student)

@@ -10,6 +10,7 @@ using Student.Common.Logic.Models;
 using Student.DataAccess.Dao;
 using log4net;
 using System.IO;
+using Student.Common.Logic.Log;
 
 namespace Student.Business.Logic
 {
@@ -17,7 +18,7 @@ namespace Student.Business.Logic
     {
         private IStudentDao IStudentDao { get; set; }
         private ISingleton ISingleton { get; set; }
-        public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public Alumno Add(Alumno student,TypeFormat typeFormat)
         {
             try

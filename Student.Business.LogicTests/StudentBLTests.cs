@@ -8,13 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using log4net;
+using Student.Common.Logic.Log;
 
 namespace Student.Business.Logic.Tests
 {
     [TestClass()]
     public class StudentBLTests
     {
-        public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly StudentBL studentBL = new StudentBL();
 
         [DataRow(TypeFormat.Txt)]

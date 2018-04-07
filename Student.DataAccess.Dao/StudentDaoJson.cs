@@ -8,12 +8,13 @@ using System.IO;
 using Student.Common.Logic.FileUtils;
 using Newtonsoft.Json;
 using log4net;
+using Student.Common.Logic.Log;
 
 namespace Student.DataAccess.Dao
 {
     public class StudentDaoJson : IStudentDao
     {
-        public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly string Path = FileUtils.Path("json");
         private List<Alumno> students = new List<Alumno>();
         public Alumno Add(Alumno student)

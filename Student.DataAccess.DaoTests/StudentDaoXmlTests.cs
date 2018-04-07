@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.IO;
 using Student.Common.Logic.Models;
 using log4net;
+using Student.Common.Logic.Log;
 
 namespace Student.DataAccess.Dao.Tests
 {
     [TestClass()]
     public class StudentDaoXmlTests
     {
-        public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly string Path = FileUtils.Path("xml");
         private readonly StudentDaoXml studentDaoXml = new StudentDaoXml();
         [TestInitialize]

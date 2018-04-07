@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using log4net;
 using Student.Common.Logic.FileUtils;
+using Student.Common.Logic.Log;
 using Student.Common.Logic.Models;
 
 namespace Student.DataAccess.Dao
 {
     public sealed class SingletonJson : ISingleton
     {
-        public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static SingletonJson instance = null;
         private static readonly object padlock = new object();
         private readonly List<Alumno> students;

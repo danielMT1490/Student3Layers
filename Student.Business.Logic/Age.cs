@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using log4net;
+using Student.Common.Logic.Log;
 
 namespace Student.Business.Logic
 {
     public static class Age
     {
-        public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static int AreAge(DateTime dateBorn, DateTime dateRegis)
         {
             try

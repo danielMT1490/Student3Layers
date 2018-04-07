@@ -6,12 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Student.Common.Logic.FileUtils;
+using Student.Common.Logic.Log;
 
 namespace Student.DataAccess.Dao
 {
     public sealed class SingletonXml :ISingleton
     {
-        public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static SingletonXml instance = null;
         private static readonly object padlock = new object();
         private readonly List<Alumno> students;

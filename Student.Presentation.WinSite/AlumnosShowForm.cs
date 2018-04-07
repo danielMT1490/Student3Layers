@@ -1,6 +1,7 @@
 ﻿using log4net;
 using Student.Business.Logic;
 using Student.Common.Logic.FileUtils;
+using Student.Common.Logic.Log;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +18,7 @@ namespace Student.Presentation.WinSite
     public partial class AlumnosShowForm : Form
     {
         private IStudentBL IStudentBl = new StudentBL();
-        public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public AlumnosShowForm()
         {
             InitializeComponent();

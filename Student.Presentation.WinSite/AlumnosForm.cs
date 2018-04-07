@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
 using System.IO;
+using Student.Common.Logic.Log;
 
 namespace Student.Presentation.WinSite
 {
@@ -20,7 +21,7 @@ namespace Student.Presentation.WinSite
 
         private Alumno alumno;
         private IStudentBL AlumnoBL;
-        public static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 
         public AlumnosForm()
