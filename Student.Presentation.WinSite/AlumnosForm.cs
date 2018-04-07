@@ -42,10 +42,10 @@ namespace Student.Presentation.WinSite
                 alumno.DateBorn = Convert.ToDateTime(dateBorn.Value);
                 Log.Debug($"Datos insertados {alumno.Id},{alumno.Nombre},{alumno.Apellidos},{alumno.Dni},{alumno.DateBorn}");
             }
-            catch (FormatException e)
+            catch (FormatException ex)
             {
-                Log.Error("El formato no es el adecuado "+e);
-                MailSend.Send("El formato insertado no es el correcto");
+                Log.Error(ex);
+                MessageError("Formato incorrecto");
                 throw;
             }
            
@@ -59,25 +59,35 @@ namespace Student.Presentation.WinSite
                 Log.Debug("Seleccionado registro en Txt");
                 AlumnoBL.Add(alumno, TypeFormat.Txt);
             }
-            catch (NullReferenceException)
+            catch (NullReferenceException ex)
             {
-                MessageBox.Show("Problema interno");
+                MessageError("Problema interno");
+                Log.Error(ex);
             }
-            catch (ArgumentNullException)
+            catch (ArgumentNullException ex)
             {
-                MessageBox.Show("Problema interno");
+                MessageError("Problema interno");
+                Log.Error(ex);
             }
-            catch (FileNotFoundException)
+            catch (FileNotFoundException ex)
             {
-                MessageBox.Show("Fallo en el registro , archivo no encontrado");
+                MessageError("Fallo en el registro , archivo no encontrado");
+                Log.Error(ex);
             }
-            catch (FileLoadException)
+            catch (FileLoadException ex)
             {
-                MessageBox.Show("Fallo en el registro , no se pudo cargar el archivo");
+                MessageError("Fallo en el registro , no se pudo cargar el archivo");
+                Log.Error(ex);
             }
-            catch (FormatException)
+            catch (FormatException ex)
             {
-                MessageBox.Show("Los datos introducidos no tienen el formato correcto");
+                MessageError("Los datos introducidos no tienen el formato correcto");
+                Log.Error(ex);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageError("No se tiene autarizacion para escribir en el archivo");
+                Log.Error(ex);
             }
 
 
@@ -91,25 +101,30 @@ namespace Student.Presentation.WinSite
                 Log.Debug("Seleccionado registro en Txt");
                 AlumnoBL.Add(alumno, TypeFormat.Json);
             }
-            catch (NullReferenceException)
+            catch (NullReferenceException ex)
             {
-                MessageBox.Show("Problema interno");
+                MessageError("Problema interno");
+                Log.Error(ex);
             }
-            catch (ArgumentNullException)
+            catch (ArgumentNullException ex)
             {
-                MessageBox.Show("Problema interno");
+                MessageError("Problema interno");
+                Log.Error(ex);
             }
-            catch (FileNotFoundException)
+            catch (FileNotFoundException ex)
             {
-                MessageBox.Show("Fallo en el registro , archivo no encontrado");
+                MessageError("Fallo en el registro , archivo no encontrado");
+                Log.Error(ex);
             }
-            catch (FileLoadException)
+            catch (FileLoadException ex)
             {
-                MessageBox.Show("Fallo en el registro , no se pudo cargar el archivo");
+                MessageError("Fallo en el registro , no se pudo cargar el archivo");
+                Log.Error(ex);
             }
-            catch (FormatException)
+            catch (FormatException ex)
             {
-                MessageBox.Show("Los datos introducidos no tienen el formato correcto");
+                MessageError("Los datos introducidos no tienen el formato correcto");
+                Log.Error(ex);
             }
 
 
@@ -123,25 +138,31 @@ namespace Student.Presentation.WinSite
                 Log.Debug("Seleccionado registro en Txt");
                 AlumnoBL.Add(alumno, TypeFormat.Xml);
             }
-            catch (NullReferenceException)
+            catch (NullReferenceException ex )
             {
-                MessageBox.Show("Problema interno");
+                MessageError("Problema interno");
+                Log.Error(ex);
             }
-            catch (ArgumentNullException)
+            catch (ArgumentNullException ex )
             {
-                MessageBox.Show("Problema interno");
+                MessageError("Problema interno");
+                Log.Error(ex);
             }
-            catch (FileNotFoundException)
+            catch (FileNotFoundException ex)
             {
-                MessageBox.Show("Fallo en el registro , archivo no encontrado");
+                MessageError("Fallo en el registro , archivo no encontrado");
+                Log.Error(ex);
             }
-            catch (FileLoadException)
+            catch (FileLoadException ex)
             {
-                MessageBox.Show("Fallo en el registro , no se pudo cargar el archivo");
+                MessageError("Fallo en el registro , no se pudo cargar el archivo");
+                Log.Error(ex);
+
             }
-            catch (FormatException)
+            catch (FormatException ex)
             {
-                MessageBox.Show("Los datos introducidos no tienen el formato correcto");
+                MessageError("Los datos introducidos no tienen el formato correcto");
+                Log.Error(ex);
             }
 
         }
@@ -152,6 +173,10 @@ namespace Student.Presentation.WinSite
             alumnosShowForm.Owner=this;
             alumnosShowForm.Show();
             this.Hide();
+        }
+        private void MessageError(string error)
+        {
+            MessageBox.Show(error,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
         }
     }
 }

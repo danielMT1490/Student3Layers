@@ -48,6 +48,11 @@ namespace Student.DataAccess.Dao
                     Log.Error("No se ha podido cargar el archivo");
                     throw ;
                 }
+                catch(UnauthorizedAccessException ex)
+                {
+                    Log.Error("No se tiene acesso al archivo");
+                    throw;
+                }
                 finally
                 {
                     if (fs!=null) fs.Close();

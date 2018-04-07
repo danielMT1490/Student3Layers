@@ -50,7 +50,6 @@
     <Compile Include="FileUtils\Campo.cs" />
     <Compile Include="FileUtils\FileUtils.cs" />
     <Compile Include="FileUtils\FormatUtil.cs" />
-    <Compile Include="FileUtils\MailSend.cs" />
     <Compile Include="FileUtils\TypeFormat.cs" />
     <Compile Include="Log\ILogger.cs" />
     <Compile Include="Log\Logger.cs" />
