@@ -60,8 +60,7 @@ namespace Student.Common.Logic.Models
 
         public override bool Equals(object obj)
         {
-            Alumno student = obj as Alumno;
-            return student != null &&
+            return obj is Alumno student &&
                    Id == student.Id &&
                    Nombre == student.Nombre &&
                    Apellidos == student.Apellidos &&
