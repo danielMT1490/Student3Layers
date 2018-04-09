@@ -13,6 +13,6 @@ namespace Student.DataAccess.Dao
         Alumno Add(Alumno student);
         Alumno Deserialize();
         List<Alumno> GetAll();
-        List<Alumno> Filtro(Campo campo, string value);
+       
     }
 }

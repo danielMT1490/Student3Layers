@@ -1,27 +1,26 @@
-﻿using Student.Common.Logic.Models;
+﻿using Student.Common.Logic.FileUtils;
+using Student.Common.Logic.Log;
+using Student.Common.Logic.Models;
 using System;
 using System.Collections.Generic;
-using log4net;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Student.Common.Logic.FileUtils;
-using Student.Common.Logic.Log;
 
 namespace Student.DataAccess.Dao
 {
-    public sealed class SingletonXml :ISingleton
+    public sealed class SingletonTxt : ISingleton
     {
         public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private static SingletonXml instance = null;
+        private static SingletonTxt instance = null;
         private static readonly object padlock = new object();
         private readonly List<Alumno> students;
 
-        public SingletonXml()
+        public SingletonTxt()
         {
-            Log.Debug("Cargamos la lista el archiva"); 
-            StudentDaoXml Sx = new StudentDaoXml();
-            students = Sx.GetAll();
+            Log.Debug("Cargamos la lista el archiva");
+            StudentDaoTxt Js = new StudentDaoTxt();
+            students = Js.GetAll();
         }
         public List<Alumno> GetList()
         {
@@ -29,17 +28,18 @@ namespace Student.DataAccess.Dao
             return students;
         }
 
-        public static SingletonXml Instance
+        public static SingletonTxt Instance
         {
             get
             {
+                Log.Debug("Comporvamos el que SingletonTxt no este instanciado");
                 if (instance == null)
                 {
                     lock (padlock)
                     {
                         if (instance == null)
                         {
-                            instance = new SingletonXml();
+                            instance = new SingletonTxt();
                         }
                     }
                 }
@@ -47,6 +47,5 @@ namespace Student.DataAccess.Dao
             }
         }
 
-        
     }
 }

@@ -15,7 +15,8 @@ namespace Student.DataAccess.Dao
     {
         public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly string Path = FileUtils.Path("txt");
-        public List<Alumno> students = new List<Alumno>();
+        public List<Alumno> Students { get ; set; }
+
         public Alumno Add(Alumno student)
         {
             if (FileUtils.FileExists(Path))
@@ -48,7 +49,7 @@ namespace Student.DataAccess.Dao
                     Log.Error("No se ha podido cargar el archivo");
                     throw ;
                 }
-                catch(UnauthorizedAccessException ex)
+                catch(UnauthorizedAccessException )
                 {
                     Log.Error("No se tiene acesso al archivo");
                     throw;
@@ -161,10 +162,10 @@ namespace Student.DataAccess.Dao
                             string[] props = new string[8];
                             props = linea.Split(',');
                             alumno = new Alumno(Guid.Parse(props[0]), Convert.ToInt32(props[1]), props[2], props[3], props[4], Convert.ToInt32(props[5]), props[6], props[7]);
-                            students.Add(alumno);
+                            Students.Add(alumno);
                         }
                         Log.Debug("Lista cargada");
-                        return students;
+                        return Students;
                     }
                     catch (FileLoadException)
                     {
@@ -190,85 +191,7 @@ namespace Student.DataAccess.Dao
             }
         }
 
-        public List<Alumno> Filtro(Campo campo, string value)
-        {
-            students = this.GetAll();
-            switch (campo)
-            {
-                case Campo.Guid:
-                    return SelectGuid(value);
-                case Campo.ID:
-                    return SelectId(value);
-                case Campo.Nombre:
-                    return SelectNombre(value);
-                case Campo.Apellidos:
-                    return SelectApellido(value);
-                case Campo.Edad:
-                    return SelectEdad(value);
-                case Campo.Fecha_de_Nacimiento:
-                    return SelectDateBorn(value);
-                case Campo.Fecha_de_Registro:
-                    return SelectDateRegistry(value);
-                default:
-                    return students;
-            }
-        }
-        private List<Alumno> SelectGuid(string value)
-        {
-            var alumnosfiltrado =
-                from alumno in students
-                where alumno.Guid == Guid.Parse(value)
-                select alumno;
-            return alumnosfiltrado.ToList();
-        }
-        private List<Alumno> SelectId(string value)
-        {
-            var alumnosfiltrado =
-                from alumno in students
-                where alumno.Id == Convert.ToInt32(value)
-                select alumno;
-            return alumnosfiltrado.ToList();
-        }
-        private List<Alumno> SelectNombre(string value)
-        {
-            var alumnosfiltrado =
-                from alumno in students
-                where alumno.Nombre == value
-                select alumno;
-            return alumnosfiltrado.ToList();
-        }
-        private List<Alumno> SelectApellido(string value)
-        {
-            var alumnosfiltrado =
-                from alumno in students
-                where alumno.Apellidos == value
-                select alumno;
-            return alumnosfiltrado.ToList();
-        }
-        private List<Alumno> SelectEdad(string value)
-        {
-            var alumnosfiltrado =
-                from alumno in students
-                where alumno.Edad == Convert.ToInt32(value)
-                select alumno;
-            return alumnosfiltrado.ToList();
-        }
-        private List<Alumno> SelectDateBorn(string value)
-        {
-            var alumnosfiltrado =
-                from alumno in students
-                where alumno.DateBornString == value
-                select alumno;
-            return alumnosfiltrado.ToList();
-        }
-        private List<Alumno> SelectDateRegistry(string value)
-        {
-            var alumnosfiltrado =
-                from alumno in students
-                where alumno.DateRegistryString == value
-                select alumno;
-            return alumnosfiltrado.ToList();
-        }
+    
 
     }
 }

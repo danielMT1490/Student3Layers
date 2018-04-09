@@ -11,6 +11,5 @@ namespace Student.DataAccess.Dao
     public interface ISingleton
     {
         List<Alumno> GetList();
-        List<Alumno> Filtro(Campo campo, string value);
     }
 }

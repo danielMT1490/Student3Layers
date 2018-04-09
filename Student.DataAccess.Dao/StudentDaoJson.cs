@@ -159,11 +159,6 @@ namespace Student.DataAccess.Dao
             }
         }
 
-        public List<Alumno> Filtro(Campo campo, string value)
-        {
-            return students;
-        }
-
         public List<Alumno> GetAll()
         {
             Log.Debug("Cargamos la lista json");

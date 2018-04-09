@@ -19,6 +19,8 @@ namespace Student.Business.Logic
         private IStudentDao IStudentDao { get; set; }
         private ISingleton ISingleton { get; set; }
         public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        private Filtro filtro { get; set; }
         public Alumno Add(Alumno student,TypeFormat typeFormat)
         {
             try
@@ -81,19 +83,23 @@ namespace Student.Business.Logic
                 {
                     case TypeFormat.Txt:
                         Log.Debug("select hecho en Txt");
-                        IStudentDao = new StudentDaoTxt();
-                        return IStudentDao.Filtro(campo,value);
+                        ISingleton = new SingletonTxt();
+                        filtro = new Filtro(ISingleton);
+                        return filtro.Select(campo,value);
                     case TypeFormat.Json:
                         Log.Debug("select hecho en  Json");
                         ISingleton = new SingletonJson();
-                        return ISingleton.Filtro(campo,value);
+                        filtro = new Filtro(ISingleton);
+                        return filtro.Select(campo, value);
                     case TypeFormat.Xml:
                         Log.Debug("select hecho en  Xml");
                         ISingleton = new SingletonXml();
-                        return ISingleton.Filtro(campo, value);
+                        filtro = new Filtro(ISingleton);
+                        return filtro.Select(campo, value);
                     default:
                         IStudentDao = new StudentDaoTxt();
-                        return IStudentDao.Filtro(campo, value);
+                        filtro = new Filtro(ISingleton);
+                        return filtro.Select(campo, value);
 
                 }
             }
