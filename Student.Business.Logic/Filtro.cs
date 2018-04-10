@@ -13,11 +13,23 @@ namespace Student.Business.Logic
     {
         public List<Alumno> Students { get; set ; }
 
-        public Filtro(ISingleton Singelton)
+        public Filtro(SingletonJson Singelton)
         {
             Students = Singelton.GetList();
         }
-      
+        public Filtro(SingletonTxt Singelton)
+        {
+            Students = Singelton.GetList();
+        }
+        public Filtro(SingletonSql Singelton)
+        {
+            Students = Singelton.GetList();
+        }
+        public Filtro(SingletonXml Singelton)
+        {
+            Students = Singelton.GetList();
+        }
+
         public List<Alumno> Select(Campo campo, string value)
         {
             switch (campo)

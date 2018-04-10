@@ -10,18 +10,23 @@ using Student.Common.Logic.Log;
 
 namespace Student.DataAccess.Dao
 {
-    public sealed class SingletonXml :ISingleton
+    public sealed class SingletonXml 
     {
         public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static SingletonXml instance = null;
         private static readonly object padlock = new object();
-        private readonly List<Alumno> students;
+        private List<Alumno> students { get; set; }
 
         public SingletonXml()
         {
-            Log.Debug("Cargamos la lista el archiva"); 
-            StudentDaoXml Sx = new StudentDaoXml();
-            students = Sx.GetAll();
+            students = new List<Alumno>();
+            Load();
+        }
+        public void Load()
+        {
+            Log.Debug("Cargamos la lista el archiva");
+            StudentDaoXml Js = new StudentDaoXml();
+            students = Js.GetAll();
         }
         public List<Alumno> GetList()
         {

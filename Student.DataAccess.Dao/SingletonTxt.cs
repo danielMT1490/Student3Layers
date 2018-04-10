@@ -9,14 +9,20 @@ using System.Threading.Tasks;
 
 namespace Student.DataAccess.Dao
 {
-    public sealed class SingletonTxt : ISingleton
+    public sealed class SingletonTxt 
     {
         public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static SingletonTxt instance = null;
         private static readonly object padlock = new object();
-        private readonly List<Alumno> students;
+        private List<Alumno> students { get; set; }
 
         public SingletonTxt()
+        {
+            students = new List<Alumno>();
+            Load();
+
+        }
+        public void Load()
         {
             Log.Debug("Cargamos la lista el archiva");
             StudentDaoTxt Js = new StudentDaoTxt();

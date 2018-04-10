@@ -44,12 +44,13 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuRegistro = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnSql = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnTxt
             // 
-            this.BtnTxt.Location = new System.Drawing.Point(60, 293);
+            this.BtnTxt.Location = new System.Drawing.Point(30, 293);
             this.BtnTxt.Name = "BtnTxt";
             this.BtnTxt.Size = new System.Drawing.Size(94, 58);
             this.BtnTxt.TabIndex = 0;
@@ -59,7 +60,7 @@
             // 
             // BtnJson
             // 
-            this.BtnJson.Location = new System.Drawing.Point(237, 293);
+            this.BtnJson.Location = new System.Drawing.Point(165, 293);
             this.BtnJson.Name = "BtnJson";
             this.BtnJson.Size = new System.Drawing.Size(94, 58);
             this.BtnJson.TabIndex = 1;
@@ -69,7 +70,7 @@
             // 
             // BtnXml
             // 
-            this.BtnXml.Location = new System.Drawing.Point(420, 293);
+            this.BtnXml.Location = new System.Drawing.Point(314, 293);
             this.BtnXml.Name = "BtnXml";
             this.BtnXml.Size = new System.Drawing.Size(94, 58);
             this.BtnXml.TabIndex = 2;
@@ -178,15 +179,26 @@
             // MenuRegistro
             // 
             this.MenuRegistro.Name = "MenuRegistro";
-            this.MenuRegistro.Size = new System.Drawing.Size(180, 22);
+            this.MenuRegistro.Size = new System.Drawing.Size(98, 22);
             this.MenuRegistro.Text = "Lista";
             this.MenuRegistro.Click += new System.EventHandler(this.MenuRegistro_Click);
+            // 
+            // BtnSql
+            // 
+            this.BtnSql.Location = new System.Drawing.Point(457, 293);
+            this.BtnSql.Name = "BtnSql";
+            this.BtnSql.Size = new System.Drawing.Size(94, 58);
+            this.BtnSql.TabIndex = 14;
+            this.BtnSql.Text = "DataBase";
+            this.BtnSql.UseVisualStyleBackColor = true;
+            this.BtnSql.Click += new System.EventHandler(this.BtnSql_Click);
             // 
             // AlumnosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 386);
+            this.Controls.Add(this.BtnSql);
             this.Controls.Add(this.dateBorn);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -229,5 +241,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem MenuRegistro;
+        private System.Windows.Forms.Button BtnSql;
     }
 }

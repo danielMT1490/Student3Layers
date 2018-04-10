@@ -59,6 +59,7 @@ namespace Student.Business.Logic.Tests
                 .One
                 .Method(s=>s.GetAll())
                 .WillReturn(Students);
+
             StudentBL sb =new StudentBL();
             List<Alumno> result = sb.GetAll(TypeFormat.Txt);
             Assert.AreEqual(result,StudentDaoMock.MockObject.GetAll());

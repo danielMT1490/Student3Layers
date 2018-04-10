@@ -17,10 +17,9 @@ namespace Student.Business.Logic
     public class StudentBL : IStudentBL
     {
         private IStudentDao IStudentDao { get; set; }
-        private ISingleton ISingleton { get; set; }
         public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private Filtro filtro { get; set; }
+        private Filtro Filtro { get; set; }
         public Alumno Add(Alumno student,TypeFormat typeFormat)
         {
             try
@@ -63,6 +62,9 @@ namespace Student.Business.Logic
                     case TypeFormat.Xml:
                         Log.Debug("Formato cambiado a Xml");
                         return new StudentDaoXml();
+                    case TypeFormat.Spl:
+                        Log.Debug("Formato cambiado a Sql");
+                        return new StudentDaoSql();
                     default:
                         return new StudentDaoTxt();
 
@@ -83,23 +85,23 @@ namespace Student.Business.Logic
                 {
                     case TypeFormat.Txt:
                         Log.Debug("select hecho en Txt");
-                        ISingleton = new SingletonTxt();
-                        filtro = new Filtro(ISingleton);
-                        return filtro.Select(campo,value);
+                        Filtro = new Filtro(SingletonTxt.Instance);
+                        return Filtro.Select(campo,value);
                     case TypeFormat.Json:
                         Log.Debug("select hecho en  Json");
-                        ISingleton = new SingletonJson();
-                        filtro = new Filtro(ISingleton);
-                        return filtro.Select(campo, value);
+                        Filtro = new Filtro(SingletonJson.Instance);
+                        return Filtro.Select(campo, value);
                     case TypeFormat.Xml:
                         Log.Debug("select hecho en  Xml");
-                        ISingleton = new SingletonXml();
-                        filtro = new Filtro(ISingleton);
-                        return filtro.Select(campo, value);
+                        Filtro = new Filtro(SingletonXml.Instance);
+                        return Filtro.Select(campo, value);
+                    case TypeFormat.Spl:
+                        Log.Debug("select hecho en  Xml");
+                        Filtro = new Filtro(SingletonSql.Instance);
+                        return Filtro.Select(campo, value);
                     default:
-                        IStudentDao = new StudentDaoTxt();
-                        filtro = new Filtro(ISingleton);
-                        return filtro.Select(campo, value);
+                        Filtro = new Filtro(SingletonTxt.Instance);
+                        return Filtro.Select(campo, value);
 
                 }
             }
@@ -117,16 +119,16 @@ namespace Student.Business.Logic
                 {
                     case TypeFormat.Txt:
                         Log.Debug("select hecho en Txt");
-                        IStudentDao = new StudentDaoTxt();
-                        return IStudentDao.GetAll();
+                        return SingletonTxt.Instance.GetList();
                     case TypeFormat.Json:
                         Log.Debug("select hecho en  Json");
-                        ISingleton = new SingletonJson();
-                        return ISingleton.GetList();
+                        return SingletonJson.Instance.GetList();
                     case TypeFormat.Xml:
                         Log.Debug("select hecho en  Xml");
-                        ISingleton = new SingletonXml();
-                        return ISingleton.GetList();
+                        return SingletonXml.Instance.GetList();
+                    case TypeFormat.Spl:
+                        Log.Debug("select hecho en  Xml");
+                        return SingletonSql.Instance.GetList();
                     default:
                         IStudentDao = new StudentDaoTxt();
                         return IStudentDao.GetAll();
@@ -138,6 +140,14 @@ namespace Student.Business.Logic
                 Log.Error("el Enum no es correcto " + e);
                 throw;
             }
+        }
+
+        public void LoadDates()
+        {
+            SingletonJson.Instance.Load();
+            SingletonTxt.Instance.Load();
+            SingletonSql.Instance.Load();
+            SingletonXml.Instance.Load();
         }
     }
 }

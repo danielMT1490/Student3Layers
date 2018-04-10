@@ -71,6 +71,7 @@ namespace Student.Presentation.WinSite
         {
             try
             {
+                IStudentBl.LoadDates();
                 DataGrid.DataSource = IStudentBl.GetAll(TypeFormat.Txt);
                 FormatUtil.ChangeFormat("Txt");
                 MessageBox.Show($"Archivo de registro seleccionado {FormatUtil.Format()}", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -241,5 +242,47 @@ namespace Student.Presentation.WinSite
         {
             MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void BtnSql_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataGrid.DataSource = IStudentBl.GetAll(TypeFormat.Spl);
+                FormatUtil.ChangeFormat("Sql");
+                MessageBox.Show($"Archivo de registro seleccionado {FormatUtil.Format()}", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageError("Problema interno");
+                Log.Error(ex);
+            }
+            catch (ArgumentNullException ex)
+            {
+                MessageError("Problema interno");
+                Log.Error(ex);
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageError("Fallo en el registro , archivo no encontrado");
+                Log.Error(ex);
+            }
+            catch (FileLoadException ex)
+            {
+                MessageError("Fallo en el registro , no se pudo cargar el archivo");
+                Log.Error(ex);
+            }
+            catch (FormatException ex)
+            {
+                MessageError("Los datos introducidos no tienen el formato correcto");
+                Log.Error(ex);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageError("No se tiene autarizacion para escribir en el archivo");
+                Log.Error(ex);
+            }
+        }
+
+     
     }
 }

@@ -17,11 +17,11 @@ namespace Student.Business.LogicTests
     public class FiltroTest
     {
         private readonly MockFactory _factory;
-        private readonly Mock<ISingleton> Singleton;
+        private readonly Mock<SingletonTxt> Singleton;
         public FiltroTest()
         {
             _factory = new MockFactory();
-            Singleton = _factory.CreateMock<ISingleton>();
+            Singleton = _factory.CreateMock<SingletonTxt>();
         }
 
         [TestCleanup]

@@ -11,7 +11,6 @@ namespace Student.DataAccess.Dao
     public interface IStudentDao
     {
         Alumno Add(Alumno student);
-        Alumno Deserialize();
         List<Alumno> GetAll();
         
     }

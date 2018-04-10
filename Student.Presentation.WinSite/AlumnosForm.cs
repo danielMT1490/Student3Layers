@@ -178,5 +178,42 @@ namespace Student.Presentation.WinSite
         {
             MessageBox.Show(error,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
         }
+
+        private void BtnSql_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                textId.Text = "0";
+                this.LoadAlumnoData();
+                Log.Debug("Seleccionado registro en Txt");
+                AlumnoBL.Add(alumno, TypeFormat.Spl);
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageError("Problema interno");
+                Log.Error(ex);
+            }
+            catch (ArgumentNullException ex)
+            {
+                MessageError("Problema interno");
+                Log.Error(ex);
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageError("Fallo en el registro , archivo no encontrado");
+                Log.Error(ex);
+            }
+            catch (FileLoadException ex)
+            {
+                MessageError("Fallo en el registro , no se pudo cargar el archivo");
+                Log.Error(ex);
+
+            }
+            catch (FormatException ex)
+            {
+                MessageError("Los datos introducidos no tienen el formato correcto");
+                Log.Error(ex);
+            }
+        }
     }
 }

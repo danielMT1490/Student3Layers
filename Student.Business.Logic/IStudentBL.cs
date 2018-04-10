@@ -16,5 +16,6 @@ namespace Student.Business.Logic
         IStudentDao ChangeFormat(TypeFormat typeformat);
         List<Alumno> GetSelect(TypeFormat type , string value,Campo campo);
         List<Alumno> GetAll(TypeFormat typeFormat);
+        void LoadDates();
     }
 }

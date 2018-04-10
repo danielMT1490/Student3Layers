@@ -40,6 +40,7 @@
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CBoxSelect = new System.Windows.Forms.ComboBox();
+            this.BtnSql = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +65,7 @@
             // 
             // BtnJso
             // 
-            this.BtnJso.Location = new System.Drawing.Point(323, 27);
+            this.BtnJso.Location = new System.Drawing.Point(248, 27);
             this.BtnJso.Name = "BtnJso";
             this.BtnJso.Size = new System.Drawing.Size(126, 39);
             this.BtnJso.TabIndex = 2;
@@ -74,7 +75,7 @@
             // 
             // BtnXml
             // 
-            this.BtnXml.Location = new System.Drawing.Point(590, 27);
+            this.BtnXml.Location = new System.Drawing.Point(418, 27);
             this.BtnXml.Name = "BtnXml";
             this.BtnXml.Size = new System.Drawing.Size(126, 39);
             this.BtnXml.TabIndex = 3;
@@ -158,11 +159,22 @@
             this.CBoxSelect.Size = new System.Drawing.Size(228, 21);
             this.CBoxSelect.TabIndex = 20;
             // 
+            // BtnSql
+            // 
+            this.BtnSql.Location = new System.Drawing.Point(590, 27);
+            this.BtnSql.Name = "BtnSql";
+            this.BtnSql.Size = new System.Drawing.Size(126, 39);
+            this.BtnSql.TabIndex = 21;
+            this.BtnSql.Text = "Database";
+            this.BtnSql.UseVisualStyleBackColor = true;
+            this.BtnSql.Click += new System.EventHandler(this.BtnSql_Click);
+            // 
             // AlumnosShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(786, 390);
+            this.Controls.Add(this.BtnSql);
             this.Controls.Add(this.CBoxSelect);
             this.Controls.Add(this.lblCampo);
             this.Controls.Add(this.label4);
@@ -198,5 +210,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registroToolStripMenuItem;
         private System.Windows.Forms.ComboBox CBoxSelect;
+        private System.Windows.Forms.Button BtnSql;
     }
 }

@@ -1,23 +1,21 @@
-﻿using System;
+﻿using Student.Common.Logic.Log;
+using Student.Common.Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using log4net;
-using Student.Common.Logic.FileUtils;
-using Student.Common.Logic.Log;
-using Student.Common.Logic.Models;
 
 namespace Student.DataAccess.Dao
 {
-    public sealed class SingletonJson 
+    public sealed class SingletonSql
     {
         public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private static SingletonJson instance = null;
+        private static SingletonSql instance = null;
         private static readonly object padlock = new object();
         private List<Alumno> students { get; set; }
 
-        public SingletonJson()
+        private SingletonSql()
         {
             students = new List<Alumno>();
             Load();
@@ -25,7 +23,7 @@ namespace Student.DataAccess.Dao
         public void Load()
         {
             Log.Debug("Cargamos la lista el archiva");
-            StudentDaoJson Js = new StudentDaoJson();
+            StudentDaoSql Js = new StudentDaoSql();
             students = Js.GetAll();
         }
         public List<Alumno> GetList()
@@ -34,7 +32,7 @@ namespace Student.DataAccess.Dao
             return students;
         }
 
-        public static SingletonJson Instance
+        public static SingletonSql Instance
         {
             get
             {
@@ -44,7 +42,7 @@ namespace Student.DataAccess.Dao
                     {
                         if (instance == null)
                         {
-                            instance = new SingletonJson();
+                            instance = new SingletonSql();
                         }
                     }
                 }
@@ -52,6 +50,6 @@ namespace Student.DataAccess.Dao
             }
         }
 
-       
+      
     }
 }
