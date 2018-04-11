@@ -145,7 +145,7 @@ namespace Student.DataAccess.Dao
 
         public List<Alumno> GetAll()
         {
-            
+            Students = new List<Alumno>();
             FileStream fl = null;
             try
             {
