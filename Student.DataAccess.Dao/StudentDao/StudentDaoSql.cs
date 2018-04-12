@@ -7,6 +7,7 @@ using Student.Common.Logic.Log;
 using Student.Common.Logic.Models;
 using System.Data.SqlClient;
 using Student.Common.Logic.Resources;
+using Student.DataAccess.Dao.Resources;
 
 namespace Student.DataAccess.Dao
 {
@@ -29,7 +30,7 @@ namespace Student.DataAccess.Dao
         public Alumno Add(Alumno student)
         {
             student.ConvertDate();
-            string sql = Query.Insert;
+            string sql = Querys.Insert;
             Log.Debug($"Añadimos los datos {student.ToString()}");
             try
             {
@@ -57,7 +58,7 @@ namespace Student.DataAccess.Dao
                    
                 }
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 Log.Error(ex);
 
@@ -74,7 +75,7 @@ namespace Student.DataAccess.Dao
         {
             Students = new List<Alumno>();
             
-            string sql =Query.SelectAll;
+            string sql =Querys.SelectAll;
 
             Log.Debug($"Añadimos los datos a lista Students");
             try
@@ -115,7 +116,7 @@ namespace Student.DataAccess.Dao
                     }
                 }
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 Log.Error(ex);
 

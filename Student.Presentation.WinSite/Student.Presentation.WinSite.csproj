@@ -65,25 +65,25 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\Language.CA-ES.Designer.cs">
-      <DependentUpon>Language.CA-ES.resx</DependentUpon>
+    <Compile Include="Resources\Languages.CA-ES.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Languages.CA-ES.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Language.Designer.cs">
-      <DependentUpon>Language.resx</DependentUpon>
+    <Compile Include="Resources\Languages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Languages.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Language.EN-GB.Designer.cs">
-      <DependentUpon>Language.EN-GB.resx</DependentUpon>
+    <Compile Include="Resources\Languages.EN-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Languages.EN-GB.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Language.ES-ES.Designer.cs">
-      <DependentUpon>Language.ES-ES.resx</DependentUpon>
+    <Compile Include="Resources\Languages.ES-ES.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Languages.ES-ES.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AlumnosForm.resx">
       <DependentUpon>AlumnosForm.cs</DependentUpon>
@@ -100,21 +100,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Resources\Language.CA-ES.resx">
+    <EmbeddedResource Include="Resources\Languages.CA-ES.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Language.CA-ES.Designer.cs</LastGenOutput>
+      <LastGenOutput>Languages.CA-ES.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Language.EN-GB.resx">
+    <EmbeddedResource Include="Resources\Languages.EN-GB.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Language.EN-GB.Designer.cs</LastGenOutput>
+      <LastGenOutput>Languages.EN-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Language.ES-ES.resx">
+    <EmbeddedResource Include="Resources\Languages.ES-ES.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Language.ES-ES.Designer.cs</LastGenOutput>
+      <LastGenOutput>Languages.ES-ES.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Language.resx">
+    <EmbeddedResource Include="Resources\Languages.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Language.Designer.cs</LastGenOutput>
+      <LastGenOutput>Languages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

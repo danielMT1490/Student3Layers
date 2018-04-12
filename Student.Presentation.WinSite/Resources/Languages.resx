@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BtnFiltrar" xml:space="preserve">
+    <value>Filtrar</value>
+  </data>
   <data name="BtnSql" xml:space="preserve">
     <value>Base de Datos</value>
   </data>
@@ -126,6 +129,9 @@
   <data name="lblApellido" xml:space="preserve">
     <value>Apellidos</value>
   </data>
+  <data name="lblCampo" xml:space="preserve">
+    <value>Campo de busqueda</value>
+  </data>
   <data name="lblDateBron" xml:space="preserve">
     <value>Fecha de Nacimiento</value>
   </data>
@@ -134,6 +140,9 @@
   </data>
   <data name="lblName" xml:space="preserve">
     <value>Nombre</value>
+  </data>
+  <data name="lblValor" xml:space="preserve">
+    <value>Introduzca valor</value>
   </data>
   <data name="MenuOptionCast" xml:space="preserve">
     <value>Castellano</value>
@@ -147,22 +156,13 @@
   <data name="MenuRegistro" xml:space="preserve">
     <value>Registro</value>
   </data>
-  <data name="toolStripMenuItem1" xml:space="preserve">
-    <value>Menu</value>
-  </data>
-  <data name="BtnFiltrar" xml:space="preserve">
-    <value>Filtrar</value>
-  </data>
-  <data name="lblCampo" xml:space="preserve">
-    <value>Campo de busqueda</value>
-  </data>
-  <data name="lblValor" xml:space="preserve">
-    <value>Introduzca valor</value>
-  </data>
   <data name="menuToolStripMenuItem" xml:space="preserve">
     <value>Menu</value>
   </data>
   <data name="registroToolStripMenuItem" xml:space="preserve">
     <value>Agregar Alumno</value>
+  </data>
+  <data name="toolStripMenuItem1" xml:space="preserve">
+    <value>Menu</value>
   </data>
 </root>

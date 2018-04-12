@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Student.Common.Logic.Resources;
+using Student.Presentation.WinSite.Resources;
 
 namespace Student.Presentation.WinSite
 {
@@ -285,12 +285,12 @@ namespace Student.Presentation.WinSite
         }
         private void ChangeLanguage()
         {
-            menuToolStripMenuItem.Text = Language.menuToolStripMenuItem;
-            registroToolStripMenuItem.Text = Language.registroToolStripMenuItem;
-            lblValor.Text = Language.lblValor;
-            lblCampo.Text = Language.lblCampo;
-            BtnFiltrar.Text = Language.BtnFiltrar;
-            BtnSql.Text = Language.BtnSql;
+            menuToolStripMenuItem.Text = Languages.menuToolStripMenuItem;
+            registroToolStripMenuItem.Text = Languages.registroToolStripMenuItem;
+            lblValor.Text = Languages.lblValor;
+            lblCampo.Text = Languages.lblCampo;
+            BtnFiltrar.Text = Languages.BtnFiltrar;
+            BtnSql.Text = Languages.BtnSql;
 
         }
 

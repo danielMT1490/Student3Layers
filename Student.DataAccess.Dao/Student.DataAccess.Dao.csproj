@@ -49,10 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Resources\Query.Designer.cs">
-      <DependentUpon>Query.resx</DependentUpon>
+    <Compile Include="Resources\Querys.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Querys.resx</DependentUpon>
     </Compile>
     <Compile Include="StudentDao\IStudentDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,9 +75,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Query.resx">
+    <EmbeddedResource Include="Resources\Querys.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Query.Designer.cs</LastGenOutput>
+      <LastGenOutput>Querys.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

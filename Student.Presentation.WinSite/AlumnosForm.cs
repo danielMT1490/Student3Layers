@@ -1,7 +1,6 @@
 ﻿using Student.Business.Logic;
 using Student.Common.Logic.FileUtils;
 using Student.Common.Logic.Models;
-using Student.Common.Logic.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +15,7 @@ using System.IO;
 using Student.Common.Logic.Log;
 using System.Threading;
 using System.Globalization;
+using Student.Presentation.WinSite.Resources;
 
 namespace Student.Presentation.WinSite
 {
@@ -223,17 +223,17 @@ namespace Student.Presentation.WinSite
 
         private void ChangeLanguage()
         {
-            toolStripMenuItem1.Text = Language.toolStripMenuItem1;
-            MenuRegistro.Text = Language.MenuRegistro;
-            lblId.Text = Language.lblId;
-            lblName.Text = Language.lblName;
-            lblApellido.Text = Language.lblApellido;
-            lblDateBron.Text = Language.lblDateBron;
-            BtnSql.Text = Language.BtnSql;
-            MenuOptionCast.Text = Language.MenuOptionCast;
-            MenuOptionCat.Text = Language.MenuOptionCat;
-            MenuOptionIng.Text = Language.MenuOptionIng;
-            idiomaToolStripMenuItem.Text = Language.idiomaToolStripMenuItem;
+            toolStripMenuItem1.Text = Languages.toolStripMenuItem1;
+            MenuRegistro.Text = Languages.MenuRegistro;
+            lblId.Text = Languages.lblId;
+            lblName.Text = Languages.lblName;
+            lblApellido.Text = Languages.lblApellido;
+            lblDateBron.Text = Languages.lblDateBron;
+            BtnSql.Text = Languages.BtnSql;
+            MenuOptionCast.Text = Languages.MenuOptionCast;
+            MenuOptionCat.Text = Languages.MenuOptionCat;
+            MenuOptionIng.Text = Languages.MenuOptionIng;
+            idiomaToolStripMenuItem.Text = Languages.idiomaToolStripMenuItem;
         }
         private void ChangeCulture(string utf_8)
         {
@@ -242,19 +242,19 @@ namespace Student.Presentation.WinSite
 
         private void MenuOptionCast_Click(object sender, EventArgs e)
         {
-            ChangeCulture(Utf_8.Castellano);
+            //ChangeCulture(Utf_8.Castellano);
             ChangeLanguage();
         }
 
         private void MenuOptionCat_Click(object sender, EventArgs e)
         {
-            ChangeCulture(Utf_8.Catala);
+            //ChangeCulture(Utf_8.Catala);
             ChangeLanguage();
         }
 
         private void MenuOptionIng_Click(object sender, EventArgs e)
         {
-            ChangeCulture(Utf_8.English);
+            //ChangeCulture(Utf_8.English);
             ChangeLanguage();
         }
     }

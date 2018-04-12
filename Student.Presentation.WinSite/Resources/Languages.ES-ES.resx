@@ -117,52 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BtnSql" xml:space="preserve">
-    <value>Data Base</value>
+  <data name="BtnFiltrar" xml:space="preserve">
+    <value>Filtrar</value>
   </data>
-  <data name="idiomaToolStripMenuItem" xml:space="preserve">
-    <value>Language</value>
+  <data name="BtnSql" xml:space="preserve">
+    <value>Base de Datos</value>
   </data>
   <data name="lblApellido" xml:space="preserve">
-    <value>Last Name</value>
+    <value>Apellidos</value>
+  </data>
+  <data name="lblCampo" xml:space="preserve">
+    <value>Campo de busqueda</value>
   </data>
   <data name="lblDateBron" xml:space="preserve">
-    <value>Birthdate</value>
+    <value>Fecha de Nacimiento</value>
   </data>
   <data name="lblId" xml:space="preserve">
     <value>Id</value>
   </data>
   <data name="lblName" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="MenuOptionCast" xml:space="preserve">
-    <value>Spanish</value>
-  </data>
-  <data name="MenuOptionCat" xml:space="preserve">
-    <value>Catalan</value>
-  </data>
-  <data name="MenuOptionIng" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="MenuRegistro" xml:space="preserve">
-    <value>Registry</value>
-  </data>
-  <data name="toolStripMenuItem1" xml:space="preserve">
-    <value>Menu</value>
-  </data>
-  <data name="BtnFiltrar" xml:space="preserve">
-    <value>Filter</value>
-  </data>
-  <data name="lblCampo" xml:space="preserve">
-    <value>Search Field</value>
+    <value>Nombre</value>
   </data>
   <data name="lblValor" xml:space="preserve">
-    <value>Enter a Value</value>
+    <value>Introduzca valor</value>
+  </data>
+  <data name="MenuOptionCast" xml:space="preserve">
+    <value>Castellano</value>
+  </data>
+  <data name="MenuOptionCat" xml:space="preserve">
+    <value>Catalán</value>
+  </data>
+  <data name="MenuOptionIng" xml:space="preserve">
+    <value>Inglés</value>
+  </data>
+  <data name="MenuRegistro" xml:space="preserve">
+    <value>Registro</value>
   </data>
   <data name="menuToolStripMenuItem" xml:space="preserve">
     <value>Menu</value>
   </data>
   <data name="registroToolStripMenuItem" xml:space="preserve">
-    <value>Add Student</value>
+    <value>Agregar Alumno</value>
+  </data>
+  <data name="toolStripMenuItem1" xml:space="preserve">
+    <value>Menu</value>
   </data>
 </root>
