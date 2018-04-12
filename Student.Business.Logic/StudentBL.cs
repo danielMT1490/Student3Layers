@@ -85,22 +85,22 @@ namespace Student.Business.Logic
                 {
                     case TypeFormat.Txt:
                         Log.Debug("select hecho en Txt");
-                        Filtro = new Filtro(SingletonTxt.Instance);
+                        Filtro = new Filtro(SingletonTxt.Instance.GetList());
                         return Filtro.Select(campo,value);
                     case TypeFormat.Json:
                         Log.Debug("select hecho en  Json");
-                        Filtro = new Filtro(SingletonJson.Instance);
+                        Filtro = new Filtro(SingletonJson.Instance.GetList());
                         return Filtro.Select(campo, value);
                     case TypeFormat.Xml:
                         Log.Debug("select hecho en  Xml");
-                        Filtro = new Filtro(SingletonXml.Instance);
+                        Filtro = new Filtro(SingletonXml.Instance.GetList());
                         return Filtro.Select(campo, value);
                     case TypeFormat.Spl:
                         Log.Debug("select hecho en  Xml");
-                        Filtro = new Filtro(SingletonSql.Instance);
+                        Filtro = new Filtro(SingletonSql.Instance.GetList());
                         return Filtro.Select(campo, value);
                     default:
-                        Filtro = new Filtro(SingletonTxt.Instance);
+                        Filtro = new Filtro(SingletonTxt.Instance.GetList());
                         return Filtro.Select(campo, value);
 
                 }
