@@ -59,15 +59,16 @@ namespace Student.Presentation.WinSite
            
         }
 
-    
+
+        #region AddStudent
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                
+
                 this.LoadAlumnoData();
                 Log.Debug(LogText.Inicio);
-                AlumnoBL.Add(alumno, (TypeFormat)Enum.Parse(typeof(TypeFormat),ConfigFormat));
+                AlumnoBL.Add(alumno, (TypeFormat)Enum.Parse(typeof(TypeFormat), ConfigFormat));
             }
             catch (NullReferenceException ex)
             {
@@ -100,20 +101,27 @@ namespace Student.Presentation.WinSite
                 Log.Error(ex);
                 MessageError(Languages.ErrorInfo);
             }
-        }
+        } 
+        #endregion
 
+        #region Go
         private void MenuRegistro_Click(object sender, EventArgs e)
         {
             AlumnosShowForm alumnosShowForm = new AlumnosShowForm();
-            alumnosShowForm.Owner=this;
+            alumnosShowForm.Owner = this;
             alumnosShowForm.Show();
             this.Hide();
-        }
+        } 
+        #endregion
+
+        #region MessageError
         private void MessageError(string error)
         {
-            MessageBox.Show(error,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+        #endregion
 
+        #region Config
         private void ChangeLanguage()
         {
             toolStripMenuItem1.Text = Languages.toolStripMenuItem1;
@@ -133,13 +141,32 @@ namespace Student.Presentation.WinSite
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(utf_8);
         }
+        private void InitializeConfig()
+        {
+            string LanguageConfig = LanguageUtils.GetLanguageConfig();
+            ChangeCulture(LanguageConfig);
+            MenuOptionCast.Checked = LanguageConfig.Equals(Utf_8.Castellano) ? true : false;
+            MenuOptionCat.Checked = LanguageConfig.Equals(Utf_8.Catala) ? true : false;
+            MenuOptionIng.Checked = LanguageConfig.Equals(Utf_8.English) ? true : false;
 
+            ConfigFormat = FormatUtil.Format();
+            if (ConfigFormat.Equals(FormatPWS.Sql)) { lblId.Visible = false; textId.Visible = false; }
+
+            txtConfigOption.Checked = ConfigFormat.Equals(FormatPWS.Txt) ? true : false;
+            jsonConfigOption.Checked = ConfigFormat.Equals(FormatPWS.Json) ? true : false;
+            xmlConfigOption.Checked = ConfigFormat.Equals(FormatPWS.Xml) ? true : false;
+            sqlConfigOption.Checked = ConfigFormat.Equals(FormatPWS.Sql) ? true : false;
+
+        } 
+        #endregion
+
+        #region ChangeLanguage
         private void MenuOptionCast_Click(object sender, EventArgs e)
         {
             LanguageUtils.ChangeLanguageConfig(Utf_8.Castellano);
             ChangeCulture(Utf_8.Castellano);
             ChangeLanguage();
-            MenuOptionCast.Checked=true;
+            MenuOptionCast.Checked = true;
             MenuOptionCat.Checked = false;
             MenuOptionIng.Checked = false;
         }
@@ -160,33 +187,17 @@ namespace Student.Presentation.WinSite
             MenuOptionCast.Checked = false;
             MenuOptionCat.Checked = false;
             MenuOptionIng.Checked = true;
-        }
+        } 
+        #endregion
 
-        private void InitializeConfig()
-        {
-            string LanguageConfig = LanguageUtils.GetLanguageConfig();
-            ChangeCulture( LanguageConfig);
-            MenuOptionCast.Checked = LanguageConfig.Equals(Utf_8.Castellano) ?  true :  false;
-            MenuOptionCat.Checked = LanguageConfig.Equals(Utf_8.Catala) ? true : false;
-            MenuOptionIng.Checked = LanguageConfig.Equals(Utf_8.English) ? true : false;
-
-            ConfigFormat = FormatUtil.Format();
-            if (ConfigFormat.Equals(FormatPWS.Sql)) { lblId.Visible = false; textId.Visible = false; }
-
-            txtConfigOption.Checked =ConfigFormat.Equals(FormatPWS.Txt) ? true : false;
-            jsonConfigOption.Checked = ConfigFormat.Equals(FormatPWS.Json) ? true : false;
-            xmlConfigOption.Checked = ConfigFormat.Equals(FormatPWS.Xml) ? true : false;
-            sqlConfigOption.Checked = ConfigFormat.Equals(FormatPWS.Sql) ? true : false;
-
-        }
-
+        #region ChangeFormat
         private void txtConfigOption_Click(object sender, EventArgs e)
         {
             FormatUtil.ChangeFormat(FormatPWS.Txt);
             ConfigFormat = FormatUtil.Format();
             txtConfigOption.Checked = true;
             jsonConfigOption.Checked = false;
-            xmlConfigOption.Checked =  false;
+            xmlConfigOption.Checked = false;
             sqlConfigOption.Checked = false;
             lblId.Visible = true; textId.Visible = true;
         }
@@ -221,6 +232,7 @@ namespace Student.Presentation.WinSite
             lblId.Visible = false; textId.Visible = false;
         }
 
-       
+        #endregion
+
     }
 }
