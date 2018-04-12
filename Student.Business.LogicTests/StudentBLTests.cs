@@ -43,18 +43,13 @@ namespace Student.Business.Logic.Tests
         public void BlAddTest(TypeFormat typeFormat)
         {
             Alumno student = new Alumno(Guid.NewGuid(), 1, "45687654h", "Daniel", "Madrigal", 28, "24/06/1990", "05/09/2017");
-
+            //MetohdWith cuando el metodo espera parámetros
             StudentBLMock.Expects
                 .One
-                .MethodWith(s=>s.Add(student ,typeFormat))
+                .MethodWith(StudentBLMockInstance=> StudentBLMockInstance.Add(student ,typeFormat))
                 .WillReturn(student);
 
             Assert.AreEqual(student,StudentBLMock.MockObject.Add(student,typeFormat));
-            /*Log.Debug("Entramos en test de formato");
-           
-           // var result = studentBL.Add(student, typeFormat);
-            Assert.IsTrue(student.Equals(result));
-            Log.Debug("Se registra que el alumno con el formato especificado");*/
         }
 
         
@@ -71,11 +66,11 @@ namespace Student.Business.Logic.Tests
 
             StudentDaoMock.Expects
                 .One
-                .Method(s=>s.GetAll())
+                .Method(StudentDaoMockInstance=> StudentDaoMockInstance.GetAll())
                 .WillReturn(Students);
             StudentBLMock.Expects
                 .One
-                .MethodWith(b => b.GetAll(TypeFormat.Txt))
+                .MethodWith(StudentBLMockInstance => StudentBLMockInstance.GetAll(TypeFormat.Txt))
                 .WillReturn(Students);
            
             Assert.AreEqual(Students, StudentBLMock.MockObject.GetAll(TypeFormat.Txt));
