@@ -62,7 +62,7 @@ namespace Student.Business.Logic
                     case TypeFormat.Xml:
                         Log.Debug("Formato cambiado a Xml");
                         return new StudentDaoXml();
-                    case TypeFormat.Spl:
+                    case TypeFormat.Sql:
                         Log.Debug("Formato cambiado a Sql");
                         return new StudentDaoSql();
                     default:
@@ -95,7 +95,7 @@ namespace Student.Business.Logic
                         Log.Debug("select hecho en  Xml");
                         Filtro = new Filtro(SingletonXml.Instance.GetList());
                         return Filtro.Select(campo, value);
-                    case TypeFormat.Spl:
+                    case TypeFormat.Sql:
                         Log.Debug("select hecho en  Xml");
                         Filtro = new Filtro(SingletonSql.Instance.GetList());
                         return Filtro.Select(campo, value);
@@ -126,7 +126,7 @@ namespace Student.Business.Logic
                     case TypeFormat.Xml:
                         Log.Debug("select hecho en  Xml");
                         return SingletonXml.Instance.GetList();
-                    case TypeFormat.Spl:
+                    case TypeFormat.Sql:
                         Log.Debug("select hecho en  Xml");
                         return SingletonSql.Instance.GetList();
                     default:

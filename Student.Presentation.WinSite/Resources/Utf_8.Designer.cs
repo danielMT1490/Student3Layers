@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Student.Common.Logic.Resources {
+namespace Student.Presentation.WinSite.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Student.Common.Logic.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Format {
+    public class Utf_8 {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Format() {
+        internal Utf_8() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Student.Common.Logic.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Student.Common.Logic.Resources.Format", typeof(Format).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Student.Presentation.WinSite.Resources.Utf_8", typeof(Utf_8).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,29 @@ namespace Student.Common.Logic.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Json.
+        ///   Busca una cadena traducida similar a ES-ES.
         /// </summary>
-        public static string Json {
+        public static string Castellano {
             get {
-                return ResourceManager.GetString("Json", resourceCulture);
+                return ResourceManager.GetString("Castellano", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Registro..
+        ///   Busca una cadena traducida similar a CA-ES.
         /// </summary>
-        public static string Registro {
+        public static string Catala {
             get {
-                return ResourceManager.GetString("Registro", resourceCulture);
+                return ResourceManager.GetString("Catala", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sql.
+        ///   Busca una cadena traducida similar a EN-GB.
         /// </summary>
-        public static string Sql {
+        public static string English {
             get {
-                return ResourceManager.GetString("Sql", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Txt.
-        /// </summary>
-        public static string Txt {
-            get {
-                return ResourceManager.GetString("Txt", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Xml.
-        /// </summary>
-        public static string Xml {
-            get {
-                return ResourceManager.GetString("Xml", resourceCulture);
+                return ResourceManager.GetString("English", resourceCulture);
             }
         }
     }

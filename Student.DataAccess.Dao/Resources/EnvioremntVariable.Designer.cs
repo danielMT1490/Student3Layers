@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Student.Common.Logic.Resources {
+namespace Student.DataAccess.Dao.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Student.Common.Logic.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Format {
+    public class EnvioremntVariable {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Format() {
+        internal EnvioremntVariable() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Student.Common.Logic.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Student.Common.Logic.Resources.Format", typeof(Format).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Student.DataAccess.Dao.Resources.EnvioremntVariable", typeof(EnvioremntVariable).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,11 @@ namespace Student.Common.Logic.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Json.
+        ///   Busca una cadena traducida similar a Database.
         /// </summary>
-        public static string Json {
+        public static string Database {
             get {
-                return ResourceManager.GetString("Json", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Registro..
-        /// </summary>
-        public static string Registro {
-            get {
-                return ResourceManager.GetString("Registro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Sql.
-        /// </summary>
-        public static string Sql {
-            get {
-                return ResourceManager.GetString("Sql", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Txt.
-        /// </summary>
-        public static string Txt {
-            get {
-                return ResourceManager.GetString("Txt", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Xml.
-        /// </summary>
-        public static string Xml {
-            get {
-                return ResourceManager.GetString("Xml", resourceCulture);
+                return ResourceManager.GetString("Database", resourceCulture);
             }
         }
     }

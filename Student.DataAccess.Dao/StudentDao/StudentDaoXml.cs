@@ -10,13 +10,14 @@ using System.Xml.Serialization;
 using log4net;
 using Student.Common.Logic.Log;
 using Student.Common.Logic.Resources;
+using Student.DataAccess.Dao.Resources;
 
 namespace Student.DataAccess.Dao
 {
     public class StudentDaoXml : IStudentDao
     {
         public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly string Path = FileUtils.Path(Format.Xml);
+        private readonly string Path = FileUtils.Path(FormatDao.Xml);
         private List<Alumno> students = new List<Alumno>();
         public Alumno Add(Alumno student)
         {

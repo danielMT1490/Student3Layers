@@ -61,6 +61,15 @@ namespace Student.Presentation.WinSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Añadir.
+        /// </summary>
+        public static string BtnAdd {
+            get {
+                return ResourceManager.GetString("BtnAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Filtrar.
         /// </summary>
         public static string BtnFiltrar {
@@ -75,6 +84,24 @@ namespace Student.Presentation.WinSite.Resources {
         public static string BtnSql {
             get {
                 return ResourceManager.GetString("BtnSql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error ocurrido pongase en contacto con el fabricante.
+        /// </summary>
+        public static string ErrorInfo {
+            get {
+                return ResourceManager.GetString("ErrorInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Formato.
+        /// </summary>
+        public static string formatoConfig {
+            get {
+                return ResourceManager.GetString("formatoConfig", resourceCulture);
             }
         }
         

@@ -22,14 +22,14 @@ namespace Student.Common.Logic.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Utf_8 {
+    public class ConfigVariable {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Utf_8() {
+        internal ConfigVariable() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Student.Common.Logic.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Student.Common.Logic.Resources.Utf-8", typeof(Utf_8).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Student.Common.Logic.Resources.ConfigVariable", typeof(ConfigVariable).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,20 @@ namespace Student.Common.Logic.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ES-ES.
+        ///   Busca una cadena traducida similar a Format.
         /// </summary>
-        public static string Castellano {
+        public static string Format {
             get {
-                return ResourceManager.GetString("Castellano", resourceCulture);
+                return ResourceManager.GetString("Format", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a CA-ES.
+        ///   Busca una cadena traducida similar a Language.
         /// </summary>
-        public static string Catala {
+        public static string Language {
             get {
-                return ResourceManager.GetString("Catala", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a EN-GB.
-        /// </summary>
-        public static string English {
-            get {
-                return ResourceManager.GetString("English", resourceCulture);
+                return ResourceManager.GetString("Language", resourceCulture);
             }
         }
     }

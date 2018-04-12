@@ -24,7 +24,7 @@ namespace Student.DataAccess.Dao
         public StudentDaoSql()
         {
             _conn = null;
-            connectionString = Environment.GetEnvironmentVariable("Database",EnvironmentVariableTarget.User);
+            connectionString = Environment.GetEnvironmentVariable(EnvioremntVariable.Database,EnvironmentVariableTarget.User);
         }
 
         public Alumno Add(Alumno student)

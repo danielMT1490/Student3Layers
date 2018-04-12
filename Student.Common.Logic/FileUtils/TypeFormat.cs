@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Student.Common.Logic.FileUtils
 {
-    public  enum TypeFormat { Txt=1,Json=2,Xml=3,Spl=4}
+    public  enum TypeFormat { Txt=1,Json=2,Xml=3,Sql=4}
 }

@@ -165,4 +165,13 @@
   <data name="toolStripMenuItem1" xml:space="preserve">
     <value>Menu</value>
   </data>
+  <data name="formatoConfig" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="BtnAdd" xml:space="preserve">
+    <value>Afegir</value>
+  </data>
+  <data name="ErrorInfo" xml:space="preserve">
+    <value>Error ocorregut posis en contacte amb el fabricant</value>
+  </data>
 </root>

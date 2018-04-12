@@ -248,7 +248,7 @@ namespace Student.Presentation.WinSite
         {
             try
             {
-                DataGrid.DataSource = IStudentBl.GetAll(TypeFormat.Spl);
+                DataGrid.DataSource = IStudentBl.GetAll(TypeFormat.Sql);
                 FormatUtil.ChangeFormat("Sql");
                 MessageBox.Show($"Archivo de registro seleccionado {FormatUtil.Format()}", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

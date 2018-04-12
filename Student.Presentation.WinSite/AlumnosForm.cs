@@ -16,6 +16,8 @@ using Student.Common.Logic.Log;
 using System.Threading;
 using System.Globalization;
 using Student.Presentation.WinSite.Resources;
+using System.Data.SqlClient;
+using Student.Common.Logic.Resources;
 
 namespace Student.Presentation.WinSite
 {
@@ -25,13 +27,14 @@ namespace Student.Presentation.WinSite
         private Alumno alumno;
         private IStudentBL AlumnoBL;
         public static readonly ILogger Log = new Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        private string ConfigFormat { get; set; }
 
         public AlumnosForm()
         {
             
-            Log.Debug("Arranca la aplicación");
+            Log.Debug(LogText.Inicio);
             InitializeComponent();
+            InitializeConfig();
             alumno = new Alumno();
             AlumnoBL = new StudentBL();
             ChangeLanguage();
@@ -45,131 +48,58 @@ namespace Student.Presentation.WinSite
                 alumno.Apellidos = textApellido.Text;
                 alumno.Dni = textDni.Text;
                 alumno.DateBorn = Convert.ToDateTime(dateBorn.Value);
-                Log.Debug($"Datos insertados {alumno.Id},{alumno.Nombre},{alumno.Apellidos},{alumno.Dni},{alumno.DateBorn}");
+                Log.Debug($"{LogText.Object}{alumno.ToString()}");
             }
             catch (FormatException ex)
             {
                 Log.Error(ex);
-                MessageError("Formato incorrecto");
+                MessageError(Languages.ErrorInfo);
                 throw;
             }
            
         }
 
-        private void BtnTxt_Click(object sender, EventArgs e)
+    
+        private void BtnAdd_Click(object sender, EventArgs e)
         {
             try
             {
+                
                 this.LoadAlumnoData();
-                Log.Debug("Seleccionado registro en Txt");
-                AlumnoBL.Add(alumno, TypeFormat.Txt);
+                Log.Debug(LogText.Inicio);
+                AlumnoBL.Add(alumno, (TypeFormat)Enum.Parse(typeof(TypeFormat),ConfigFormat));
             }
             catch (NullReferenceException ex)
             {
-                MessageError("Problema interno");
+                MessageError(Languages.ErrorInfo);
                 Log.Error(ex);
             }
             catch (ArgumentNullException ex)
             {
-                MessageError("Problema interno");
+                MessageError(Languages.ErrorInfo);
                 Log.Error(ex);
             }
             catch (FileNotFoundException ex)
             {
-                MessageError("Fallo en el registro , archivo no encontrado");
+                MessageError(Languages.ErrorInfo);
                 Log.Error(ex);
             }
             catch (FileLoadException ex)
             {
-                MessageError("Fallo en el registro , no se pudo cargar el archivo");
-                Log.Error(ex);
-            }
-            catch (FormatException ex)
-            {
-                MessageError("Los datos introducidos no tienen el formato correcto");
-                Log.Error(ex);
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                MessageError("No se tiene autarizacion para escribir en el archivo");
-                Log.Error(ex);
-            }
-
-
-        }
-
-        private void BtnJson_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.LoadAlumnoData();
-                Log.Debug("Seleccionado registro en Txt");
-                AlumnoBL.Add(alumno, TypeFormat.Json);
-            }
-            catch (NullReferenceException ex)
-            {
-                MessageError("Problema interno");
-                Log.Error(ex);
-            }
-            catch (ArgumentNullException ex)
-            {
-                MessageError("Problema interno");
-                Log.Error(ex);
-            }
-            catch (FileNotFoundException ex)
-            {
-                MessageError("Fallo en el registro , archivo no encontrado");
-                Log.Error(ex);
-            }
-            catch (FileLoadException ex)
-            {
-                MessageError("Fallo en el registro , no se pudo cargar el archivo");
-                Log.Error(ex);
-            }
-            catch (FormatException ex)
-            {
-                MessageError("Los datos introducidos no tienen el formato correcto");
-                Log.Error(ex);
-            }
-
-
-        }
-
-        private void BtnXml_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.LoadAlumnoData();
-                Log.Debug("Seleccionado registro en Txt");
-                AlumnoBL.Add(alumno, TypeFormat.Xml);
-            }
-            catch (NullReferenceException ex )
-            {
-                MessageError("Problema interno");
-                Log.Error(ex);
-            }
-            catch (ArgumentNullException ex )
-            {
-                MessageError("Problema interno");
-                Log.Error(ex);
-            }
-            catch (FileNotFoundException ex)
-            {
-                MessageError("Fallo en el registro , archivo no encontrado");
-                Log.Error(ex);
-            }
-            catch (FileLoadException ex)
-            {
-                MessageError("Fallo en el registro , no se pudo cargar el archivo");
+                MessageError(Languages.ErrorInfo);
                 Log.Error(ex);
 
             }
             catch (FormatException ex)
             {
-                MessageError("Los datos introducidos no tienen el formato correcto");
+                MessageError(Languages.ErrorInfo);
                 Log.Error(ex);
             }
-
+            catch (SqlException ex)
+            {
+                Log.Error(ex);
+                MessageError(Languages.ErrorInfo);
+            }
         }
 
         private void MenuRegistro_Click(object sender, EventArgs e)
@@ -184,43 +114,6 @@ namespace Student.Presentation.WinSite
             MessageBox.Show(error,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
         }
 
-        private void BtnSql_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                textId.Text = "0";
-                this.LoadAlumnoData();
-                Log.Debug("Seleccionado registro en Txt");
-                AlumnoBL.Add(alumno, TypeFormat.Spl);
-            }
-            catch (NullReferenceException ex)
-            {
-                MessageError("Problema interno");
-                Log.Error(ex);
-            }
-            catch (ArgumentNullException ex)
-            {
-                MessageError("Problema interno");
-                Log.Error(ex);
-            }
-            catch (FileNotFoundException ex)
-            {
-                MessageError("Fallo en el registro , archivo no encontrado");
-                Log.Error(ex);
-            }
-            catch (FileLoadException ex)
-            {
-                MessageError("Fallo en el registro , no se pudo cargar el archivo");
-                Log.Error(ex);
-
-            }
-            catch (FormatException ex)
-            {
-                MessageError("Los datos introducidos no tienen el formato correcto");
-                Log.Error(ex);
-            }
-        }
-
         private void ChangeLanguage()
         {
             toolStripMenuItem1.Text = Languages.toolStripMenuItem1;
@@ -229,11 +122,12 @@ namespace Student.Presentation.WinSite
             lblName.Text = Languages.lblName;
             lblApellido.Text = Languages.lblApellido;
             lblDateBron.Text = Languages.lblDateBron;
-            BtnSql.Text = Languages.BtnSql;
             MenuOptionCast.Text = Languages.MenuOptionCast;
             MenuOptionCat.Text = Languages.MenuOptionCat;
             MenuOptionIng.Text = Languages.MenuOptionIng;
             idiomaToolStripMenuItem.Text = Languages.idiomaToolStripMenuItem;
+            formatoConfig.Text = Languages.formatoConfig;
+            BtnAdd.Text = Languages.BtnAdd;
         }
         private void ChangeCulture(string utf_8)
         {
@@ -242,20 +136,91 @@ namespace Student.Presentation.WinSite
 
         private void MenuOptionCast_Click(object sender, EventArgs e)
         {
-            //ChangeCulture(Utf_8.Castellano);
+            LanguageUtils.ChangeLanguageConfig(Utf_8.Castellano);
+            ChangeCulture(Utf_8.Castellano);
             ChangeLanguage();
+            MenuOptionCast.Checked=true;
+            MenuOptionCat.Checked = false;
+            MenuOptionIng.Checked = false;
         }
-
         private void MenuOptionCat_Click(object sender, EventArgs e)
         {
-            //ChangeCulture(Utf_8.Catala);
+            LanguageUtils.ChangeLanguageConfig(Utf_8.Catala);
+            ChangeCulture(Utf_8.Catala);
             ChangeLanguage();
+            MenuOptionCast.Checked = false;
+            MenuOptionCat.Checked = true;
+            MenuOptionIng.Checked = false;
         }
-
         private void MenuOptionIng_Click(object sender, EventArgs e)
         {
-            //ChangeCulture(Utf_8.English);
+            LanguageUtils.ChangeLanguageConfig(Utf_8.English);
+            ChangeCulture(Utf_8.English);
             ChangeLanguage();
+            MenuOptionCast.Checked = false;
+            MenuOptionCat.Checked = false;
+            MenuOptionIng.Checked = true;
         }
+
+        private void InitializeConfig()
+        {
+            string LanguageConfig = LanguageUtils.GetLanguageConfig();
+            ChangeCulture( LanguageConfig);
+            MenuOptionCast.Checked = LanguageConfig.Equals(Utf_8.Castellano) ?  true :  false;
+            MenuOptionCat.Checked = LanguageConfig.Equals(Utf_8.Catala) ? true : false;
+            MenuOptionIng.Checked = LanguageConfig.Equals(Utf_8.English) ? true : false;
+
+            ConfigFormat = FormatUtil.Format();
+            if (ConfigFormat.Equals(FormatPWS.Sql)) { lblId.Visible = false; textId.Visible = false; }
+
+            txtConfigOption.Checked =ConfigFormat.Equals(FormatPWS.Txt) ? true : false;
+            jsonConfigOption.Checked = ConfigFormat.Equals(FormatPWS.Json) ? true : false;
+            xmlConfigOption.Checked = ConfigFormat.Equals(FormatPWS.Xml) ? true : false;
+            sqlConfigOption.Checked = ConfigFormat.Equals(FormatPWS.Sql) ? true : false;
+
+        }
+
+        private void txtConfigOption_Click(object sender, EventArgs e)
+        {
+            FormatUtil.ChangeFormat(FormatPWS.Txt);
+            ConfigFormat = FormatUtil.Format();
+            txtConfigOption.Checked = true;
+            jsonConfigOption.Checked = false;
+            xmlConfigOption.Checked =  false;
+            sqlConfigOption.Checked = false;
+            lblId.Visible = true; textId.Visible = true;
+        }
+        private void jsonConfigOption_Click(object sender, EventArgs e)
+        {
+            FormatUtil.ChangeFormat(FormatPWS.Json);
+            ConfigFormat = FormatUtil.Format();
+            txtConfigOption.Checked = false;
+            jsonConfigOption.Checked = true;
+            xmlConfigOption.Checked = false;
+            sqlConfigOption.Checked = false;
+            lblId.Visible = true; textId.Visible = true;
+        }
+        private void xmlConfigOption_Click(object sender, EventArgs e)
+        {
+            FormatUtil.ChangeFormat(FormatPWS.Xml);
+            ConfigFormat = FormatUtil.Format();
+            txtConfigOption.Checked = false;
+            jsonConfigOption.Checked = false;
+            xmlConfigOption.Checked = true;
+            sqlConfigOption.Checked = false;
+            lblId.Visible = true; textId.Visible = true;
+        }
+        private void sqlConfigOption_Click(object sender, EventArgs e)
+        {
+            FormatUtil.ChangeFormat(FormatPWS.Sql);
+            ConfigFormat = FormatUtil.Format();
+            txtConfigOption.Checked = false;
+            jsonConfigOption.Checked = false;
+            xmlConfigOption.Checked = false;
+            sqlConfigOption.Checked = true;
+            lblId.Visible = false; textId.Visible = false;
+        }
+
+       
     }
 }

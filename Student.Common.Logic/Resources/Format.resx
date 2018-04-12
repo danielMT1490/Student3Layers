@@ -118,12 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Json" xml:space="preserve">
-    <value>json</value>
+    <value>Json</value>
+  </data>
+  <data name="Registro" xml:space="preserve">
+    <value>Registro.</value>
+  </data>
+  <data name="Sql" xml:space="preserve">
+    <value>Sql</value>
   </data>
   <data name="Txt" xml:space="preserve">
-    <value>txt</value>
+    <value>Txt</value>
   </data>
   <data name="Xml" xml:space="preserve">
-    <value>xml</value>
+    <value>Xml</value>
   </data>
 </root>

@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BtnTxt = new System.Windows.Forms.Button();
-            this.BtnJson = new System.Windows.Forms.Button();
-            this.BtnXml = new System.Windows.Forms.Button();
             this.textId = new System.Windows.Forms.TextBox();
             this.textNombre = new System.Windows.Forms.TextBox();
             this.textApellido = new System.Windows.Forms.TextBox();
@@ -44,43 +41,18 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuRegistro = new System.Windows.Forms.ToolStripMenuItem();
-            this.BtnSql = new System.Windows.Forms.Button();
             this.idiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuOptionCast = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuOptionCat = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuOptionIng = new System.Windows.Forms.ToolStripMenuItem();
+            this.formatoConfig = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtConfigOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.jsonConfigOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.xmlConfigOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.sqlConfigOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnAdd = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // BtnTxt
-            // 
-            this.BtnTxt.Location = new System.Drawing.Point(30, 293);
-            this.BtnTxt.Name = "BtnTxt";
-            this.BtnTxt.Size = new System.Drawing.Size(94, 58);
-            this.BtnTxt.TabIndex = 0;
-            this.BtnTxt.Text = "Txt";
-            this.BtnTxt.UseVisualStyleBackColor = true;
-            this.BtnTxt.Click += new System.EventHandler(this.BtnTxt_Click);
-            // 
-            // BtnJson
-            // 
-            this.BtnJson.Location = new System.Drawing.Point(165, 293);
-            this.BtnJson.Name = "BtnJson";
-            this.BtnJson.Size = new System.Drawing.Size(94, 58);
-            this.BtnJson.TabIndex = 1;
-            this.BtnJson.Text = "Json";
-            this.BtnJson.UseVisualStyleBackColor = true;
-            this.BtnJson.Click += new System.EventHandler(this.BtnJson_Click);
-            // 
-            // BtnXml
-            // 
-            this.BtnXml.Location = new System.Drawing.Point(314, 293);
-            this.BtnXml.Name = "BtnXml";
-            this.BtnXml.Size = new System.Drawing.Size(94, 58);
-            this.BtnXml.TabIndex = 2;
-            this.BtnXml.Text = "Xml";
-            this.BtnXml.UseVisualStyleBackColor = true;
-            this.BtnXml.Click += new System.EventHandler(this.BtnXml_Click);
             // 
             // textId
             // 
@@ -166,7 +138,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.idiomaToolStripMenuItem});
+            this.idiomaToolStripMenuItem,
+            this.formatoConfig});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(584, 24);
@@ -184,19 +157,9 @@
             // MenuRegistro
             // 
             this.MenuRegistro.Name = "MenuRegistro";
-            this.MenuRegistro.Size = new System.Drawing.Size(180, 22);
+            this.MenuRegistro.Size = new System.Drawing.Size(98, 22);
             this.MenuRegistro.Text = "Lista";
             this.MenuRegistro.Click += new System.EventHandler(this.MenuRegistro_Click);
-            // 
-            // BtnSql
-            // 
-            this.BtnSql.Location = new System.Drawing.Point(457, 293);
-            this.BtnSql.Name = "BtnSql";
-            this.BtnSql.Size = new System.Drawing.Size(94, 58);
-            this.BtnSql.TabIndex = 14;
-            this.BtnSql.Text = "DataBase";
-            this.BtnSql.UseVisualStyleBackColor = true;
-            this.BtnSql.Click += new System.EventHandler(this.BtnSql_Click);
             // 
             // idiomaToolStripMenuItem
             // 
@@ -211,30 +174,79 @@
             // MenuOptionCast
             // 
             this.MenuOptionCast.Name = "MenuOptionCast";
-            this.MenuOptionCast.Size = new System.Drawing.Size(180, 22);
+            this.MenuOptionCast.Size = new System.Drawing.Size(129, 22);
             this.MenuOptionCast.Text = "Castellano";
             this.MenuOptionCast.Click += new System.EventHandler(this.MenuOptionCast_Click);
             // 
             // MenuOptionCat
             // 
             this.MenuOptionCat.Name = "MenuOptionCat";
-            this.MenuOptionCat.Size = new System.Drawing.Size(180, 22);
+            this.MenuOptionCat.Size = new System.Drawing.Size(129, 22);
             this.MenuOptionCat.Text = "Catalán";
             this.MenuOptionCat.Click += new System.EventHandler(this.MenuOptionCat_Click);
             // 
             // MenuOptionIng
             // 
             this.MenuOptionIng.Name = "MenuOptionIng";
-            this.MenuOptionIng.Size = new System.Drawing.Size(180, 22);
+            this.MenuOptionIng.Size = new System.Drawing.Size(129, 22);
             this.MenuOptionIng.Text = "Inglés";
             this.MenuOptionIng.Click += new System.EventHandler(this.MenuOptionIng_Click);
+            // 
+            // formatoConfig
+            // 
+            this.formatoConfig.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.txtConfigOption,
+            this.jsonConfigOption,
+            this.xmlConfigOption,
+            this.sqlConfigOption});
+            this.formatoConfig.Name = "formatoConfig";
+            this.formatoConfig.Size = new System.Drawing.Size(64, 20);
+            this.formatoConfig.Text = "Formato";
+            // 
+            // txtConfigOption
+            // 
+            this.txtConfigOption.Name = "txtConfigOption";
+            this.txtConfigOption.Size = new System.Drawing.Size(97, 22);
+            this.txtConfigOption.Text = "Txt";
+            this.txtConfigOption.Click += new System.EventHandler(this.txtConfigOption_Click);
+            // 
+            // jsonConfigOption
+            // 
+            this.jsonConfigOption.Name = "jsonConfigOption";
+            this.jsonConfigOption.Size = new System.Drawing.Size(97, 22);
+            this.jsonConfigOption.Text = "Json";
+            this.jsonConfigOption.Click += new System.EventHandler(this.jsonConfigOption_Click);
+            // 
+            // xmlConfigOption
+            // 
+            this.xmlConfigOption.Name = "xmlConfigOption";
+            this.xmlConfigOption.Size = new System.Drawing.Size(97, 22);
+            this.xmlConfigOption.Text = "Xml";
+            this.xmlConfigOption.Click += new System.EventHandler(this.xmlConfigOption_Click);
+            // 
+            // sqlConfigOption
+            // 
+            this.sqlConfigOption.Name = "sqlConfigOption";
+            this.sqlConfigOption.Size = new System.Drawing.Size(97, 22);
+            this.sqlConfigOption.Text = "Sql";
+            this.sqlConfigOption.Click += new System.EventHandler(this.sqlConfigOption_Click);
+            // 
+            // BtnAdd
+            // 
+            this.BtnAdd.Location = new System.Drawing.Point(225, 277);
+            this.BtnAdd.Name = "BtnAdd";
+            this.BtnAdd.Size = new System.Drawing.Size(94, 58);
+            this.BtnAdd.TabIndex = 15;
+            this.BtnAdd.Text = "Añadir";
+            this.BtnAdd.UseVisualStyleBackColor = true;
+            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // AlumnosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 386);
-            this.Controls.Add(this.BtnSql);
+            this.Controls.Add(this.BtnAdd);
             this.Controls.Add(this.dateBorn);
             this.Controls.Add(this.lblDateBron);
             this.Controls.Add(this.lblDni);
@@ -245,9 +257,6 @@
             this.Controls.Add(this.textApellido);
             this.Controls.Add(this.textNombre);
             this.Controls.Add(this.textId);
-            this.Controls.Add(this.BtnXml);
-            this.Controls.Add(this.BtnJson);
-            this.Controls.Add(this.BtnTxt);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "AlumnosForm";
@@ -260,10 +269,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button BtnTxt;
-        private System.Windows.Forms.Button BtnJson;
-        private System.Windows.Forms.Button BtnXml;
         private System.Windows.Forms.TextBox textId;
         private System.Windows.Forms.TextBox textNombre;
         private System.Windows.Forms.TextBox textApellido;
@@ -277,10 +282,15 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem MenuRegistro;
-        private System.Windows.Forms.Button BtnSql;
         private System.Windows.Forms.ToolStripMenuItem idiomaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MenuOptionCast;
         private System.Windows.Forms.ToolStripMenuItem MenuOptionCat;
         private System.Windows.Forms.ToolStripMenuItem MenuOptionIng;
+        private System.Windows.Forms.ToolStripMenuItem formatoConfig;
+        private System.Windows.Forms.ToolStripMenuItem txtConfigOption;
+        private System.Windows.Forms.ToolStripMenuItem jsonConfigOption;
+        private System.Windows.Forms.ToolStripMenuItem xmlConfigOption;
+        private System.Windows.Forms.ToolStripMenuItem sqlConfigOption;
+        private System.Windows.Forms.Button BtnAdd;
     }
 }

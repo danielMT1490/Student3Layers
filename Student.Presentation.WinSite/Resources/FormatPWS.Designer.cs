@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Student.Common.Logic.Resources {
+namespace Student.Presentation.WinSite.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Student.Common.Logic.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Format {
+    public class FormatPWS {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Format() {
+        internal FormatPWS() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Student.Common.Logic.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Student.Common.Logic.Resources.Format", typeof(Format).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Student.Presentation.WinSite.Resources.FormatPWS", typeof(FormatPWS).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -66,15 +66,6 @@ namespace Student.Common.Logic.Resources {
         public static string Json {
             get {
                 return ResourceManager.GetString("Json", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Registro..
-        /// </summary>
-        public static string Registro {
-            get {
-                return ResourceManager.GetString("Registro", resourceCulture);
             }
         }
         

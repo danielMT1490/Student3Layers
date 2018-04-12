@@ -49,6 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Resources\EnvioremntVariable.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnvioremntVariable.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\FormatDao.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormatDao.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Querys.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -75,6 +85,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\EnvioremntVariable.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EnvioremntVariable.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\FormatDao.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormatDao.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Querys.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Querys.Designer.cs</LastGenOutput>

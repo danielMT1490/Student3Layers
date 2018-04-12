@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Student.Common.Logic.Resources {
+namespace Student.DataAccess.Dao.Resources {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace Student.Common.Logic.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Format {
+    internal class FormatDao {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Format() {
+        internal FormatDao() {
         }
         
         /// <summary>
         ///   Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Student.Common.Logic.Resources.Format", typeof(Format).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Student.DataAccess.Dao.Resources.FormatDao", typeof(FormatDao).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Student.Common.Logic.Resources {
         ///   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,45 +61,27 @@ namespace Student.Common.Logic.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Json.
+        ///   Busca una cadena traducida similar a json.
         /// </summary>
-        public static string Json {
+        internal static string Json {
             get {
                 return ResourceManager.GetString("Json", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Registro..
+        ///   Busca una cadena traducida similar a txt.
         /// </summary>
-        public static string Registro {
-            get {
-                return ResourceManager.GetString("Registro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Sql.
-        /// </summary>
-        public static string Sql {
-            get {
-                return ResourceManager.GetString("Sql", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Txt.
-        /// </summary>
-        public static string Txt {
+        internal static string Txt {
             get {
                 return ResourceManager.GetString("Txt", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Xml.
+        ///   Busca una cadena traducida similar a xml.
         /// </summary>
-        public static string Xml {
+        internal static string Xml {
             get {
                 return ResourceManager.GetString("Xml", resourceCulture);
             }
