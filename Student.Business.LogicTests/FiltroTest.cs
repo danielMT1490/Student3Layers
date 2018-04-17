@@ -38,15 +38,16 @@ namespace Student.Business.LogicTests
         {
             Alumno alumnoIngresado = new Alumno(Guid.NewGuid(),id,dni,nombre,apellidos,edad,fechaNacimiento,fechaRegistro);
             List<Alumno> ListaTest = new List<Alumno> { alumnoIngresado};
-            
+           
+
             Singleton.Expects
                 .One
                 .Method(s => s.GetList())
                 .WillReturn(ListaTest);
 
-            /*Filtro fl = new Filtro(Singleton.MockObject);
+            Filtro fl = new Filtro(Singleton.MockObject.GetList());
             List<Alumno> resultado = fl.Select(campo,value);
-            Assert.IsTrue(resultado.Contains(alumnoIngresado));*/
+            Assert.IsTrue(resultado.Contains(alumnoIngresado));
 
         }
     }

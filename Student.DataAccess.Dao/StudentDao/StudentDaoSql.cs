@@ -39,6 +39,7 @@ namespace Student.DataAccess.Dao
                     using (_cmd=new SqlCommand(sql,_conn))
                     {
                         _conn.Open();
+                        
                         _cmd.Parameters.AddWithValue("@UUID",student.Guid.ToString());
                         _cmd.Parameters.AddWithValue("@Nombre", student.Nombre);
                         _cmd.Parameters.AddWithValue("@Apellido", student.Apellidos);
@@ -53,10 +54,16 @@ namespace Student.DataAccess.Dao
                         // Obtenga la última identificación insertada. 
                         student.Id = Convert.ToInt32(_cmd.ExecuteScalar());
                         Log.Debug($"Recuperamos el id {student.Id}");
-                        return student;
+                        return LastInsert(_conn,student.Guid.ToString());
                     }
                    
                 }
+            }
+            catch (InvalidOperationException ex)
+            {
+                Log.Error(ex);
+
+                throw;
             }
             catch (SqlException ex)
             {
@@ -64,10 +71,7 @@ namespace Student.DataAccess.Dao
 
                 throw;
             }
-            finally
-            {
-                _conn = null;
-            }
+           
         }
 
 
@@ -87,28 +91,23 @@ namespace Student.DataAccess.Dao
                         _conn.Open();
                         using (SqlDataReader srd = _cmd.ExecuteReader())
                         {
-                            if (srd.HasRows)
-                            {
                                 while (srd.Read())
                                 {
-                                    Student = new Alumno();
-                                    Student.Guid =Guid.Parse(srd.GetString(0));
-                                    Student.Id = srd.GetInt32(1);
-                                    Student.Nombre = srd.GetString(2);
-                                    Student.Apellidos = srd.GetString(3);
-                                    Student.Dni = srd.GetString(4);
-                                    Student.DateRegistry = Convert.ToDateTime(srd.GetString(5));
-                                    Student.DateBorn = Convert.ToDateTime(srd.GetString(6));
-                                    Student.Edad = srd.GetInt32(7);
+                                    Student = new Alumno
+                                    {
+                                        Guid = Guid.Parse(srd["UUID"].ToString()),
+                                        Id = Convert.ToInt32(srd["Id"].ToString()),
+                                        Nombre = srd["Nombre"].ToString(),
+                                        Apellidos = srd["Apellido"].ToString(),
+                                        Dni = srd["Dni"].ToString(),
+                                        DateRegistry = Convert.ToDateTime(srd["DateRegistry"].ToString()),
+                                        DateBorn = Convert.ToDateTime(srd["DateBorn"].ToString()),
+                                        Edad = Convert.ToInt32(srd["Edad"].ToString())
+                                    };
                                     Log.Debug($"Añadimos {Student.ToString()} en memoria");
                                     Students.Add(Student);
                                 }
-                                return Students;
-                            }
-                            else
-                            {
-                                return Students;
-                            }
+                               return Students; 
                             
                         }
  
@@ -116,16 +115,131 @@ namespace Student.DataAccess.Dao
                     }
                 }
             }
+            catch (InvalidOperationException ex)
+            {
+                Log.Error(ex);
+
+                throw;
+            }
             catch (SqlException ex)
             {
                 Log.Error(ex);
 
                 throw;
             }
-            finally
+         
+        }
+        private Alumno LastInsert(SqlConnection conn,string guid)
+        {
+            string sql = $"select * from dbo.Students where UUID ={guid}";
+            try
             {
-                _conn = null;
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    using (SqlDataReader srd = cmd.ExecuteReader())
+                    {
+                        Student = new Alumno
+                        {
+                            Guid = Guid.Parse(srd["UUID"].ToString()),
+                            Id = Convert.ToInt32(srd["Id"].ToString()),
+                            Nombre = srd["Nombre"].ToString(),
+                            Apellidos = srd["Apellido"].ToString(),
+                            Dni = srd["Dni"].ToString(),
+                            DateRegistry = Convert.ToDateTime(srd["DateRegistry"].ToString()),
+                            DateBorn = Convert.ToDateTime(srd["DateBorn"].ToString()),
+                            Edad = Convert.ToInt32(srd["Edad"].ToString())
+                        };
+                        return Student;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Log.Error(ex);
+                throw;
+            }
+            catch (InvalidOperationException ex)
+            {
+                Log.Error(ex);
+                throw;
+            }            
+
+        }
+        
+       public Alumno SelectGuid(string guid)
+       {
+            try
+            {
+                string sql = $"select * from dbo.Students where UUID ={guid}";
+                using (_conn = new SqlConnection(connectionString))
+                {
+                    using (_cmd = new SqlCommand(sql, _conn))
+                    {
+                        _conn.Open();
+                        using (SqlDataReader srd = _cmd.ExecuteReader())
+                        {
+                            if (srd.Read())
+                            {
+                                Student = new Alumno
+                                {
+                                    Guid = Guid.Parse(srd["UUID"].ToString()),
+                                    Id = Convert.ToInt32(srd["Id"].ToString()),
+                                    Nombre = srd["Nombre"].ToString(),
+                                    Apellidos = srd["Apellido"].ToString(),
+                                    Dni = srd["Dni"].ToString(),
+                                    DateRegistry = Convert.ToDateTime(srd["DateRegistry"].ToString()),
+                                    DateBorn = Convert.ToDateTime(srd["DateBorn"].ToString()),
+                                    Edad = Convert.ToInt32(srd["Edad"].ToString())
+                                };
+                                Log.Debug($"Añadimos {Student.ToString()} en memoria");
+                            }
+                            return Student;
+                        }
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                Log.Error(ex);
+                throw;
+            }
+            catch(InvalidOperationException ex)
+            {
+                Log.Error(ex);
+                throw;
+            }
+           
+       }
+
+        public int Delete(string guid)
+        {
+            try
+            {
+                string sql = "Delete from Students where UUID = @UUID";
+                using (_conn= new SqlConnection(connectionString))
+                {
+                    using (_cmd= new SqlCommand(sql,_conn))
+                    {
+                        _cmd.Parameters.AddWithValue("@UUID",guid);
+                       return _cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Log.Error(ex);
+                throw;
+            }
+            catch(InvalidOperationException ex)
+            {
+                Log.Error(ex);
+                throw;
             }
         }
+
+       
+        
+        
     }
 }

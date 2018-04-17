@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using log4net;
@@ -18,8 +19,9 @@ namespace Student.Common.Logic.Log
         }
         public void Debug(object mensaje) => _logger.Debug(mensaje);
 
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public void Error(object mensaje) => _logger.Error(mensaje);
-
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public void Error(Exception ex)
         {
             _logger.Error($"{LogText.Error},{ex.GetType().Name} , {ex.Message} , {ex.StackTrace}",ex);

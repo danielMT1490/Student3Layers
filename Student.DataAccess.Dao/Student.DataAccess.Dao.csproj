@@ -71,6 +71,7 @@
     <Compile Include="Singelton\SingletonTxt.cs" />
     <Compile Include="Singelton\SingletonXml.cs" />
     <Compile Include="StudentDao\StudentDaoJson.cs" />
+    <Compile Include="StudentDao\StudentDaoSP.cs" />
     <Compile Include="StudentDao\StudentDaoSql.cs" />
     <Compile Include="StudentDao\StudentDaoTxt.cs" />
     <Compile Include="StudentDao\StudentDaoXml.cs" />
